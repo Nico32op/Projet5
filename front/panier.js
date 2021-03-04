@@ -56,7 +56,7 @@ console.log(produitdanslocalstorage)                                            
 //on envoie au format json dans le local storage les modifs effectés
 localStorage.setItem("teddy" ,JSON.stringify(produitdanslocalstorage));//supp dans le local storage des prod selectionnées    
 
-window.location.href = "panier.html"; //recharge l'url à la suppression d'un produit 
+window.location.href = "panier.html"; //recharge l'url à la suppression d'un produit sinon il faut actualisé la page manuellement pour supprimé le produit
 alert("Produit Supprimé =(");
 })
 }
