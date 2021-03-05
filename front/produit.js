@@ -5,18 +5,19 @@ console.log(_id_url)//window.location fournis les info de l'url
 const id = _id_url.slice(4); //(slice) permet de supprimer le "?" de l'id //
 console.log(id)//
 
-const urlteddy = "http://localhost:3000/api/teddies/"+id;
-console.log(urlteddy)
 
 
-let request = new XMLHttpRequest();
-request.onreadystatechange = function() {
-    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-        let reponse = JSON.parse(this.responseText);
-        console.log(reponse)
+let request = fetch("http://localhost:3000/api/teddies");
+request.then((response)=>{
+    const donne = response.json(); 
+    console.log(donne)
+
+donne.then((utilisateur) => {
+    console.log(utilisateur)
+
        
-        const idprodselectionne = reponse.find(element => {return element._id === id;});
-        console.log(idprodselectionne); //me permet d'afficher le contenu de l'id selectionné
+const idprodselectionne = utilisateur.find(element => {return element._id === id;});
+console.log(idprodselectionne); //me permet d'afficher le contenu de l'id selectionné
 
 //{ //partie que permet d'insérer le texte dans la partie html
 const cardlistprod = document.querySelector("#cardlistprod");
@@ -80,11 +81,13 @@ console.log(produitdanslocalstorage)
 
 });
 
+});    
+}) 
 
-      }
-};
+.catch((err) => console.log(err));
 
 
-request.open("GET", "http://localhost:3000/api/teddies");
-request.send();
+
+ 
+    
 
