@@ -8,7 +8,7 @@ console.log(id)//
 
 
 let request = fetch("http://localhost:3000/api/teddies");
-request.then((response)=>{
+request.then((response)=>{ //la méthode then renvoie l'argument response 
     const donne = response.json(); 
     console.log(donne)
 

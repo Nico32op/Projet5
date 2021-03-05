@@ -26,8 +26,9 @@ cardlistpanier.innerHTML = paniervide; //insertion de la div panier vide dans le
   <div class="card-body">
   <img class="card-img-top" src="${produitdanslocalstorage[i].phototed}" alt="teddy"/>
     <h5 class="card-title">Quantité 1 : Nom ${produitdanslocalstorage[i].nomproduit}</h5> 
-    <h5 class="card-prix">${produitdanslocalstorage[i].prix}euros : <p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
-   </div>
+    <h5 class="card-prix">Prix : ${produitdanslocalstorage[i].prix}euros<p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
+    
+    </div>
 </article>
        `
        ;

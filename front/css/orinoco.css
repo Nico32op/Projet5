@@ -30,7 +30,7 @@ body {
   border: 2px solid none;
   border-radius: 8px;
   box-shadow: 1px 1px 2px #555;
-  width: 600px;
+  width: 324px;
   height: 400px;
   margin: 5px;
   background-color: white;
@@ -38,8 +38,8 @@ body {
 }
 
 #btn-envoyer {
-  padding: 10px;
-  font-size: 18px;
+  padding: 7px;
+  font-size: 15px;
   background: linear-gradient(#9356DC, #FF79DA);
   text-decoration: none;
   color: white;
@@ -57,23 +57,26 @@ body {
   border: 2px solid none;
   border-radius: 8px;
   box-shadow: 1px 1px 2px #555;
-  width: 600px;
-  height: 240px;
+  width: 322px;
+  height: 250px;
   margin: 5px;
   background-color: rgb(170, 166, 166);
   position: relative;
-  display: flex;
+  flex-direction: column;
   justify-content: space-around;
   margin: auto;
 }
 
+
 .paniervide {
-  text-align: center; 
+  text-align: center;
+  font-size: 18px; 
+  font-weight: bolder;
 }
 
 #btn_supp {
-  padding: 10px;
-  font-size: 18px;
+  padding: 7px;
+  font-size: 15px;
   background: linear-gradient(#9356DC, #FF79DA);
   text-decoration: none;
   color: white;
@@ -83,10 +86,6 @@ body {
   height: 100%;
 }
 
-.paniervide img{
-  justify-content: center;
-  background-color: hotpink;
-}
 /*FIN PARTIE JS*/
 
 
