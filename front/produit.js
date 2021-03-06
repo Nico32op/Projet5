@@ -65,9 +65,23 @@ let contenuprodrecup = {  //les contenus à récupérer dans le panier quand on 
 //-----------------------------------récupéré les produits dans local storage// 
 let produitdanslocalstorage = JSON.parse(localStorage.getItem("teddy"));
 //json.parse permet de convertir le format js en json// 
+
+//fonction apparaition fenêtre pop up
+const popupconfirm = function(){ //.confirm afficher 2 boutons ok et annuler
+  if(window.confirm(`${idprodselectionne.name} a bien été ajouté au panier
+Cliquer sur OK pour consulter le panier ou ANNULER pour revenir à l'acceuil`)){
+    window.location.href ="panier.html"; //.href permet de renvoyer vers une autre adresse url
+  }else{
+    window.location.href = "index.html";
+  } 
+};
+
+
+
 if(produitdanslocalstorage){
   produitdanslocalstorage.push(contenuprodrecup); //envoie des contenues des prod à récupérer dans le local storage
   localStorage.setItem("teddy" ,JSON.stringify(produitdanslocalstorage));
+  popupconfirm();
 //création de la clé teddy dans le tableau du local storage 
 // json.stringify envoie des données au format js à convertir en json
 }
@@ -77,6 +91,7 @@ produitdanslocalstorage = [];
 produitdanslocalstorage.push(contenuprodrecup); 
 localStorage.setItem("teddy" ,JSON.stringify(produitdanslocalstorage));
 console.log(produitdanslocalstorage)
+popupconfirm();
 //création de la clé teddy dans le tableau du local storage 
 }
 
