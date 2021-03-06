@@ -25,25 +25,27 @@ document.querySelector("#cardlist").style.display="none";
 }
 
 let request = fetch("http://localhost:3000/api/teddies");
-request.then((response)=>{
-    const donne = response.json(); 
-    console.log(donne)
+//décla promesse (request)
+request.then(async (response)=>{ //la méthode then renvoie l'argument response si tout est ok avec la promesse (statut 200 requête reussi) 
+                                //déclaration function asynchrone (argument response)
+try{// try relève si il y a des erreurs dans le bloc si il y a une erreur elle relevée dans le catch
+const donnejson = await response.json(); //traduit les données reçu au format json si la promesse est bien reçu
+console.log(donnejson)
 
-donne.then((utilisateur) => {
-    console.log(utilisateur)
- 
-    for( let i = 0; i < utilisateur.length; i++){ /*boucle qui me permet d'ajouter les arguments de ma fonction addcard jusqu'à la fin du tableau (const response qui contient tous le json)*/
+    for( let i = 0; i < donnejson.length; i++){ /*boucle qui me permet d'ajouter les arguments de ma fonction addcard jusqu'à la fin du tableau (const response qui contient tous le json)*/
     addCard(
-      utilisateur[i].imageUrl,
-      utilisateur[i].name,
-      utilisateur[i].price,
-      utilisateur[i]._id
+      donnejson[i].imageUrl,
+      donnejson[i].name,
+      donnejson[i].price,
+      donnejson[i]._id
       );
 }     
-});    
+} catch(erreur){  //si une erreur est révélée dans le bloc (try) elle sera affichée ici
+  console.log(erreur)
+} 
 }) 
 
-.catch((err) => console.log(err));
+.catch((err) => console.log(err)); //catch renvoie une erreur si elle se produit dans la requête
 
         //const nomprod1=(donne[0].name); /*(response est un tableau)appel le nom du tableau avec l'index0*/
         //const price1=(donne[0].price); /*(response est un tableau)appel le prix du tableau avec l'index0 */

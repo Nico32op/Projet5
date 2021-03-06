@@ -6,17 +6,18 @@ const id = _id_url.slice(4); //(slice) permet de supprimer le "?" de l'id //
 console.log(id)//
 
 
-
+    
 let request = fetch("http://localhost:3000/api/teddies");
-request.then((response)=>{ //la méthode then renvoie l'argument response 
-    const donne = response.json(); 
-    console.log(donne)
+//décla promesse (request)
+request.then(async (response)=>{ //la méthode then renvoie l'argument response si tout est ok avec la promesse (statut 200 requête reussi) 
+console.log(response)             //déclaration function asynchrone (argument response)
 
-donne.then((utilisateur) => {
-    console.log(utilisateur)
+// try relève si il y a des erreurs dans le bloc si il y a une erreur elle relevée dans le catch
+try{
+const donnejson = await response.json(); //traduit les données reçu au format json si la promesse est bien reçu
+console.log(donnejson)
 
-       
-const idprodselectionne = utilisateur.find(element => {return element._id === id;});
+const idprodselectionne = donnejson.find(element => {return element._id === id;});
 console.log(idprodselectionne); //me permet d'afficher le contenu de l'id selectionné
 
 //{ //partie que permet d'insérer le texte dans la partie html
@@ -80,11 +81,12 @@ console.log(produitdanslocalstorage)
 }
 
 });
-
-});    
+} catch (err){ //si une erreur est révélée dans le bloc (try) elle sera affichée ici
+  console.log(err)
+}
 }) 
 
-.catch((err) => console.log(err));
+.catch((err) => console.log(err)); //.catch renvoie une erreur si il y a une erreur dans la requête
 
 
 
