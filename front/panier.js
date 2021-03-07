@@ -98,13 +98,13 @@ const affichformulairehtml = `
   <input type="text" id="prenom" name="prenom" placeholder="Votre prénom">
 
   <label for="emailAddress">Email</label>
-  <input id="emailAddress" type="email" name="email" placeholder="Votre email">
+  <input id="email" type="email" name="email" placeholder="Votre email">
   
   <label for="ville">Ville</label>
   <input id="ville"  placeholder="Votre ville" type="text">
 
   <label for="cp">Code Postal</label>
-  <input id="cp"  placeholder="Votre code Postal" type="text">
+  <input id="cp" name="cp"  placeholder="Votre code Postal" type="text">
    
   <label for="adresse">Adresse</label>
   <textarea id="adresse" name="adresse" placeholder="Votre adresse" style="height:50px"></textarea>
@@ -117,10 +117,33 @@ const affichformulairehtml = `
   </select>
   <br /><br />
 
-  <input type="submit" value="Envoyer">
+  <input id="envoieformulaire" name="envoieformulaire "type="submit" value="Envoyer">
 </form>
 </div>
 `
 ;
 
 constplacementformulairehtml.insertAdjacentHTML("beforeend", affichformulairehtml); //insertion du formulaire à l'endroit souhaité direct en html
+
+const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selection du bouton envoie formulaire
+btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
+e.preventDefault(); //empeche le recharge de la console au clic
+
+localStorage.setItem("nom", document.querySelector("#nom").value)
+localStorage.setItem("prenom", document.querySelector("#prenom").value)
+localStorage.setItem("email", document.querySelector("#email").value)
+localStorage.setItem("ville", document.querySelector("#ville").value)
+localStorage.setItem("cp", document.querySelector("#cp").value)
+localStorage.setItem("adresse", document.querySelector("#adresse").value)
+//création des clés des formulaires dans le local storage
+
+const formulaireok = {//création d'une constante qui contient/affichera toutes les clés et valeurs du formulaires ensenmble 
+nom : localStorage.getItem("nom"), 
+prenom : localStorage.getItem("prenom"), 
+email : localStorage.getItem("email"), 
+ville : localStorage.getItem("ville"), 
+cp : localStorage.getItem("cp"), 
+adresse : localStorage.getItem("adresse")
+};
+console.log(formulaireok);
+})
