@@ -1,5 +1,7 @@
-body {font-family: Arial, Helvetica, sans-serif;
-  padding: 0px;}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0px;
+}
 
 input[type=text], textarea, input[type=email] {
   width: 100%;
@@ -13,9 +15,11 @@ input[type=text], textarea, input[type=email] {
   margin-left: 0px;
   resize: vertical;
 }
-label{margin-right: 0px;
+label {  
+  margin-right: 0px;
   margin-left: 0px;
-  width: 100%;}
+  width: 100%;
+}
 
 input[type=submit] {
   background: linear-gradient(#9356DC, #FF79DA);
@@ -33,7 +37,7 @@ input[type=submit]:hover {
   transition-duration: 1s;
 }
 
-.containercommande {
+.containerformulaire {
   /* Ajouter box-sizing */
   box-sizing : border-box;
   border-radius:5px;
@@ -44,12 +48,12 @@ input[type=submit]:hover {
   max-width: 440px;
   margin:0 auto;
 }
- .commande { /*titre page commande*/
+ .titreformulaire { /*titre page commande*/
   color: black;
   width: 100%;
 }
 
-.btncommande {
+.btncommandeformulaire {
     padding: 10px;
     font-size: 18px;
     background: linear-gradient(#9356DC, #FF79DA);
@@ -61,7 +65,7 @@ input[type=submit]:hover {
     height: 100%;
   }
   
-.btncommande:hover {
+.btncommandeformulaire:hover {
     opacity: 0.5;
     background-color: #FF79DA;
     text-shadow: 2px 2px 2px black;

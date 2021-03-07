@@ -62,3 +62,65 @@ alert("Produit Supprimé =(");
 })
 }
 
+//----------------------------Calcul montant total panier
+
+let paniermontantotal = [] ; //on déclare un tableau qui contiendra chaque montant du panier
+
+for(let k = 0; k < produitdanslocalstorage.length; k++){
+let prixproddanspanier = produitdanslocalstorage[k].prix;
+console.log  (prixproddanspanier) //affiche le prix des produits dans le local storage/panier    
+
+paniermontantotal.push(prixproddanspanier) //on ajoute dans le tableau les montants des produis présents dans le panier 
+console.log(paniermontantotal) //affiche le tableau avec le prix présent dans la panier
+}
+ 
+//calcul des valeurs présant dans paniermontantotal grace à la méhode reduc qui permet d'accumuler les valeurs d'une liste (un tableau)
+const reducer = (accumulator, currentValue) => accumulator + currentValue; //méthode vu sur MDN
+const prixtotal = paniermontantotal.reduce(reducer,0); //on insère dans une constante l'accumulation (l'addition) des prix du tableau présent dans paniermontantotal
+console.log(prixtotal) //affiche l'addition des prix présent dans la panier  //,0 permet d'éviter une erreur dans la console quand le panier est vide
+
+//création de la div pour afficher le prix dans la partie html 
+const affichageprixtothtml = ` 
+<div class = "affichage-prix"> Montant total du panier : ${prixtotal} euros </div>
+`;
+cardlistpanier.insertAdjacentHTML("beforeend", affichageprixtothtml) //affichge la div en dessous des div déjà existantes dans la partie html 
+
+//----------------------------------PARTIE RECUP FORMULAIRE LOCAL STORAGE-----------------
+constplacementformulairehtml = document.querySelector("#cardlistpanier"); //selection de l'endroit ou on veut afficher le formulaire
+const affichformulairehtml = `                                  
+<div class="containerformulaire">
+<h1 class="titreformulaire">Formulaire de commande</h1>
+<form>
+  <label for="nom">Nom</label>
+  <input type="text" id="nom" name="nom" placeholder="Votre nom">
+
+  <label for="prenom">Prénom</label>
+  <input type="text" id="prenom" name="prenom" placeholder="Votre prénom">
+
+  <label for="emailAddress">Email</label>
+  <input id="emailAddress" type="email" name="email" placeholder="Votre email">
+  
+  <label for="ville">Ville</label>
+  <input id="ville"  placeholder="Votre ville" type="text">
+
+  <label for="cp">Code Postal</label>
+  <input id="cp"  placeholder="Votre code Postal" type="text">
+   
+  <label for="adresse">Adresse</label>
+  <textarea id="adresse" name="adresse" placeholder="Votre adresse" style="height:50px"></textarea>
+ 
+  <label for="Pays">Pays :</label>
+  <select name="pays" id="pays">
+    <option value="Fr">France</option>
+    <option value="Angl">Italie</option>
+    <option value="USA">USA</option>
+  </select>
+  <br /><br />
+
+  <input type="submit" value="Envoyer">
+</form>
+</div>
+`
+;
+
+constplacementformulairehtml.insertAdjacentHTML("beforeend", affichformulairehtml); //insertion du formulaire à l'endroit souhaité direct en html
