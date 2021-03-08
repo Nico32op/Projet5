@@ -146,4 +146,15 @@ cp : localStorage.getItem("cp"),
 adresse : localStorage.getItem("adresse")
 };
 console.log(formulaireok);
+
+//donné a envoyer serveur, formulaire + produit enregistré dans le panier(local storage)
+const Envoieserveur = { 
+    produitdanslocalstorage, 
+    formulaireok
+    
+};
+console.log(Envoieserveur)
 })
+
+
+
