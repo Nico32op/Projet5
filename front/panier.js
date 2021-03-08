@@ -97,27 +97,19 @@ const affichformulairehtml = `
   <label for="prenom">Prénom</label>
   <input type="text" id="prenom" name="prenom" placeholder="Votre prénom">
 
-  <label for="emailAddress">Email</label>
-  <input id="email" type="email" name="email" placeholder="Votre email">
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="Votre email">
   
   <label for="ville">Ville</label>
-  <input id="ville"  placeholder="Votre ville" type="text">
+  <input type="text" id="ville" name="ville"  placeholder="Votre ville" >
 
   <label for="cp">Code Postal</label>
-  <input id="cp" name="cp"  placeholder="Votre code Postal" type="text">
+  <input type="text"  id="cp" name="cp" placeholder="Votre code Postal"  pattern="[0-9]{,5}">
    
   <label for="adresse">Adresse</label>
   <textarea id="adresse" name="adresse" placeholder="Votre adresse" style="height:50px"></textarea>
  
-  <label for="Pays">Pays :</label>
-  <select name="pays" id="pays">
-    <option value="Fr">France</option>
-    <option value="Angl">Italie</option>
-    <option value="USA">USA</option>
-  </select>
-  <br /><br />
-
-  <input id="envoieformulaire" name="envoieformulaire "type="submit" value="Envoyer">
+<input id="envoieformulaire" name="envoieformulaire "type="submit" value="Envoyer">
 </form>
 </div>
 `
@@ -154,7 +146,23 @@ const Envoieserveur = {
     
 };
 console.log(Envoieserveur)
+
+window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
+alert("Commande Envoyé");
 })
 
+/* const POSTfecth = fetch("http://localhost:3000/api/teddies",{ //envoie des données du local storage avec la méthode POST FETCH
+    method: "POST",
+    body: JSON.stringify(Envoieserveur),
+    headers: {
+        "Content-type": "application/json",
+    },  
+});
+ */
 
-
+btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
+e.preventDefault(); //empeche le recharge de la console au clic
+if (window.getComputedStyle(document.querySelector(".prodselectionner")).display=='block'){
+    document.querySelector(".prodselectionner").style.display="none";
+    } 
+})    
