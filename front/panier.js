@@ -157,6 +157,8 @@ console.log("fait") */
 
 window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
 alert("Commande Envoyé");
+
+localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
 })
 
 

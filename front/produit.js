@@ -80,6 +80,7 @@ Cliquer sur OK pour consulter le panier ou ANNULER pour revenir à l'acceuil`)){
 if(produitdanslocalstorage){
   produitdanslocalstorage.push(contenuprodrecup); //envoie des contenues des prod à récupérer dans le local storage
   localStorage.setItem("teddy" ,JSON.stringify(produitdanslocalstorage));
+  localStorage.setItem("teddy2" ,JSON.stringify(produitdanslocalstorage)); // on créé 2 fois la même clé, une le contenu sera affichée en html et l'autre restera uniquement dans le local storage
   popupconfirm();
 //création de la clé teddy dans le tableau du local storage 
 // json.stringify envoie des données au format js à convertir en json
@@ -89,6 +90,7 @@ else{
 produitdanslocalstorage = []; 
 produitdanslocalstorage.push(contenuprodrecup); 
 localStorage.setItem("teddy" ,JSON.stringify(produitdanslocalstorage));
+localStorage.setItem("teddy2" ,JSON.stringify(produitdanslocalstorage)); // on créé 2 fois la même clé, une le contenu sera affichée en html et l'autre restera uniquement dans le local storage
 console.log(produitdanslocalstorage)
 popupconfirm();
 //création de la clé teddy dans le tableau du local storage 
