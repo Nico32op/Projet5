@@ -140,22 +140,27 @@ const Envoieserveur = {
 };
 console.log(Envoieserveur)
 
-//localStorage.removeItem('teddy');
+/* const fetchpost = fetch("http://localhost:3000/api/teddies",{ //envoie des données du local storage avec la méthode POST FETCH
+    method: "POST",
+    body: JSON.stringify(Envoieserveur),
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }      
+})
+
+.then(response => response.json()) 
+.then(json => console.log(json))
+.catch(y => console.log(y)); 
+
+
+console.log("fait") */
 
 window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
 alert("Commande Envoyé");
 })
 
-/* const POSTfecth = fetch("http://localhost:3000/api/teddies",{ //envoie des données du local storage avec la méthode POST FETCH
-    method: "POST",
-    body: JSON.stringify(Envoieserveur),
-    headers: {
-        "Content-type": "application/json",
-    },  
-});
- */
 
-/* btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
+ /* btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
 e.preventDefault(); //empeche le recharge de la console au clic
 if (window.getComputedStyle(document.querySelector("#cardlistpanier")).display=='block'){
     document.querySelector("#cardlistpanier").style.display="none";
