@@ -86,11 +86,9 @@ body {
   height: 100%;
 }
 
-.prodselectionner{
+.prodselectionner{ /*les articles du panier en block pour faire disparaitre au click*/
   display: block;
 }
-
-
 /*FIN PARTIE JS*/
 
 

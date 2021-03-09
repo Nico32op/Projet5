@@ -1,5 +1,4 @@
 //---------------------------------Récup Panier du local storage à afficher-----------
-
 let produitdanslocalstorage = JSON.parse(localStorage.getItem("teddy")); //récup du local storage dans la page panier avec la clé teddy
 console.log(produitdanslocalstorage);
 
@@ -86,7 +85,7 @@ const affichageprixtothtml = `
 cardlistpanier.insertAdjacentHTML("beforeend", affichageprixtothtml) //affichge la div en dessous des div déjà existantes dans la partie html 
 
 //----------------------------------PARTIE RECUP FORMULAIRE LOCAL STORAGE-----------------
-constplacementformulairehtml = document.querySelector("#cardlistpanier"); //selection de l'endroit ou on veut afficher le formulaire
+constplacementformulairehtml = document.querySelector("#formulaire"); //selection de l'endroit ou on veut afficher le formulaire
 const affichformulairehtml = `                                  
 <div class="containerformulaire">
 <h1 class="titreformulaire">Formulaire de commande</h1>
@@ -114,30 +113,24 @@ const affichformulairehtml = `
 </div>
 `
 ;
-
-constplacementformulairehtml.insertAdjacentHTML("beforeend", affichformulairehtml); //insertion du formulaire à l'endroit souhaité direct en html
+constplacementformulairehtml.innerHTML =affichformulairehtml ;
+//constplacementformulairehtml.insertAdjacentHTML("beforeend", affichformulairehtml); //insertion du formulaire à l'endroit souhaité direct en html
 
 const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selection du bouton envoie formulaire
 btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
 e.preventDefault(); //empeche le recharge de la console au clic
 
-localStorage.setItem("nom", document.querySelector("#nom").value)
-localStorage.setItem("prenom", document.querySelector("#prenom").value)
-localStorage.setItem("email", document.querySelector("#email").value)
-localStorage.setItem("ville", document.querySelector("#ville").value)
-localStorage.setItem("cp", document.querySelector("#cp").value)
-localStorage.setItem("adresse", document.querySelector("#adresse").value)
-//création des clés des formulaires dans le local storage
-
-const formulaireok = {//création d'une constante qui contient/affichera toutes les clés et valeurs du formulaires ensenmble 
-nom : localStorage.getItem("nom"), 
-prenom : localStorage.getItem("prenom"), 
-email : localStorage.getItem("email"), 
-ville : localStorage.getItem("ville"), 
-cp : localStorage.getItem("cp"), 
-adresse : localStorage.getItem("adresse")
+const formulaireok = {//création d'une constante qui contient/affichera toutes les valeurs du formulaires ensenmble 
+nom : document.querySelector("#nom").value, 
+prenom : document.querySelector("#prenom").value, 
+email : document.querySelector("#email").value, 
+ville : document.querySelector("#ville").value, 
+cp : document.querySelector("#cp").value, 
+adresse : document.querySelector("#adresse").value
 };
 console.log(formulaireok);
+
+localStorage.setItem("formulaireok", JSON.stringify(formulaireok)); //création d'une clé au format json dans le local storage qui contient les info du formulaire
 
 //donné a envoyer serveur, formulaire + produit enregistré dans le panier(local storage)
 const Envoieserveur = { 
@@ -146,6 +139,8 @@ const Envoieserveur = {
     
 };
 console.log(Envoieserveur)
+
+//localStorage.removeItem('teddy');
 
 window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
 alert("Commande Envoyé");
@@ -160,9 +155,9 @@ alert("Commande Envoyé");
 });
  */
 
-btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
+/* btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
 e.preventDefault(); //empeche le recharge de la console au clic
-if (window.getComputedStyle(document.querySelector(".prodselectionner")).display=='block'){
-    document.querySelector(".prodselectionner").style.display="none";
-    } 
-})    
+if (window.getComputedStyle(document.querySelector("#cardlistpanier")).display=='block'){
+    document.querySelector("#cardlistpanier").style.display="none";
+    }  
+})     */

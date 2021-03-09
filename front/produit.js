@@ -37,7 +37,6 @@ const card = `<article class="cardprod">
      <p><a id="btn-envoyer" href="#" role="button">Ajouter au panier</a></p>
    </div>
 </article>
-
 `
 ;
 cardlistprod.innerHTML = card;
