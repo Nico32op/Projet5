@@ -24,7 +24,7 @@ document.querySelector("#cardlist").style.display="none";
 }
 }
 
-let request = fetch("http://localhost:3000/api/teddies");
+let request = fetch("http://localhost:3000/api/teddies"); //fetch déclenche la promesse
 //décla promesse (request)
 request.then(async (response)=>{ //la méthode then renvoie l'argument response si tout est ok avec la promesse (statut 200 requête reussi) 
                                 //déclaration function asynchrone (argument response)

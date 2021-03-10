@@ -140,7 +140,7 @@ const Envoieserveur = {
 };
 console.log(Envoieserveur)
 
-/* const fetchpost = fetch("http://localhost:3000/api/teddies",{ //envoie des données du local storage avec la méthode POST FETCH
+/*   const fetchpost = fetch("http://localhost:3000/api/teddies/order",{ //envoie des données du local storage avec la méthode POST FETCH
     method: "POST",
     body: JSON.stringify(Envoieserveur),
     headers: {
@@ -150,10 +150,10 @@ console.log(Envoieserveur)
 
 .then(response => response.json()) 
 .then(json => console.log(json))
-.catch(y => console.log(y)); 
+.catch(y => console.log(y));   */
 
 
-console.log("fait") */
+console.log("fait") 
 
 window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
 alert("Commande Envoyé");
