@@ -91,13 +91,13 @@ const affichformulairehtml = `
 <h1 class="titreformulaire">Formulaire de commande</h1>
 <form>
   <label for="nom">Nom</label>
-  <input type="text" id="nom" name="nom" placeholder="Votre nom">
+  <input type="text" id="nom" name="nom" maxlength='5' placeholder="Votre nom" required>
 
   <label for="prenom">Prénom</label>
   <input type="text" id="prenom" name="prenom" placeholder="Votre prénom">
 
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" placeholder="Votre email">
+  <label for="mail">Email</label>
+  <input type="email" id="email" name="email" placeholder="Votre email" required>
   
   <label for="ville">Ville</label>
   <input type="text" id="ville" name="ville"  placeholder="Votre ville" >
@@ -127,6 +127,8 @@ email : document.querySelector("#email").value,
 ville : document.querySelector("#ville").value, 
 cp : document.querySelector("#cp").value, 
 adresse : document.querySelector("#adresse").value
+
+
 };
 console.log(formulaireok);
 
@@ -140,25 +142,30 @@ const Envoieserveur = {
 };
 console.log(Envoieserveur)
 
-/*   const fetchpost = fetch("http://localhost:3000/api/teddies/order",{ //envoie des données du local storage avec la méthode POST FETCH
-    method: "POST",
-    body: JSON.stringify(Envoieserveur),
-    headers: {
-        "Content-type": "application/json; charset=UTF-8"
-    }      
-})
-
-.then(response => response.json()) 
-.then(json => console.log(json))
-.catch(y => console.log(y));   */
-
-
 console.log("fait") 
 
-window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
-alert("Commande Envoyé");
+//window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
+//alert("Commande Envoyé");
 
 localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
+
+
+ /*        let postfect = fetch("http://localhost:3000/api/teddies/order", {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(Envoieserveur) ,
+        });
+        if (postfect) {
+            let responseId = JSON.parse;
+            console.log(responseId)
+            window.location.href = "confirm.html";
+        } else {
+            console.log('OUPS');
+        }  */
+
+
 })
 
 
