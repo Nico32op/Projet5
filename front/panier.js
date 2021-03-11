@@ -125,17 +125,17 @@ checkInput ();
 
 
 checkInput = () =>{ // création de la fonction me permettant de contrôler le formulaire avant l'envoie au serveur 
-    //Controle Regex
+    //Déclarations des variables pour procécer au controle Regex
     let checkString = /[a-zA-Z]/;
     let checkNumber = /[0-9]/;
-    //Source pour vérification email => emailregex.com
+    //emailregex.com m'a founris le contenu de ma variable checkMail
     let checkMail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/y;
     let checkSpecialCharacter = /[§!@#$%^&*(),.?":{}|<>]/;
 
     //message de vérification vide
-    let checkMessage = "";
+    let messageverif = "";
 
-    //Récupération des inputs
+    //Récupération des valeurs inputs
     let Nom = document.querySelector("#nom").value;
     let Prenom = document.querySelector("#prenom").value;
     let Email = document.querySelector("#email").value;
@@ -147,43 +147,43 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
       //tests des différents input du formulaire
         //Test nom, les chiffres ou les charactères spéciaaux ou le 'vide' ne sont pas acceptés
         if(checkNumber.test(Nom) == true || checkSpecialCharacter.test(Nom) == true || Nom == ""){
-        	checkMessage = "Vérifier/Compléter votre nom";
+        	messageverif = "Vérifier/Compléter votre nom";
         }else{
         	console.log("Nom ok");
         };
         //Test du prénom, les chiffres ou charactères spéciaux ou le 'vide' ne sont pas acceptés 
         if(checkNumber.test(Prenom) == true || checkSpecialCharacter.test(Prenom) == true || Prenom == ""){
-        	checkMessage = checkMessage + "\n"+"Vérifier/Compléter votre prénom";
+        	messageverif = messageverif + "\n"+"Vérifier/Compléter votre prénom";
         }else{
         	console.log("Prénom ok");
         };
         //Test du mail selon le regex de la source L256
         if(checkMail.test(Email) == false){
-        	checkMessage = checkMessage + "\n" + "Vérifier/Compléter votre email";
+        	messageverif = messageverif + "\n" + "Vérifier/Compléter votre email";
         }else{
         	console.log("Adresse mail ok");
         };
         //Test de l'adresse, les characteres spéciaux ou le 'vide' ne sont pas acceptés
         if(checkSpecialCharacter.test(Adresse) == true || Adresse == ""){
-        	checkMessage = checkMessage +"\n"+ "Vérifier/Compléter votre adresse";
+        	messageverif = messageverif +"\n"+ "Vérifier/Compléter votre adresse";
         }else{
         	console.log("Adresse ok");
         };
         //Test de la ville, les chiffres ou charactères spéciaux ou le 'vide' ne sont pas acceptés
         if(checkSpecialCharacter.test(Ville) == true || checkNumber.test(Ville) == true || Ville == ""){
-        	checkMessage = checkMessage + "\n"+ "Vérifier/Compléter votre ville"
+        	messageverif = messageverif + "\n"+ "Vérifier/Compléter votre ville"
         }else{
         	console.log("Ville ok")
         };
         //Test du code postale, les lettres ou charactères spéciaux ou le 'vide' ne sont pas acceptés
         if(checkSpecialCharacter.test(CodePostal) == true || checkString.test(CodePostal) == true || CodePostal == ""){
-        	checkMessage = checkMessage +"\n"+ "Vérifier/Compléter votre CP";
+        	messageverif = messageverif +"\n"+ "Vérifier/Compléter votre CP";
         }else{
         	console.log("CP ok");
         };
         //Si une des conditions n'est pas ok , un message d'alert s'affiche avec le 'lieu' ou l'erreur est détectée
-        if(checkMessage != ""){
-        	alert("Il est nécessaire de :" + "\n" + checkMessage); //"\n" permet d'aller à la ligne
+        if(messageverif != ""){
+        	alert("Il est nécessaire de :" + "\n" + messageverif); //"\n" permet d'aller à la ligne
         }
         //Si tout est ok on passe à la suite
         else{const formulaireok = {//création d'une constante qui contient/affichera toutes les valeurs du formulaires ensenmble 
@@ -205,12 +205,10 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
             
         };
         console.log(Envoieserveur)
-        //window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
-        //alert("Commande Envoyé");
         
         localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
-                //window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
-                //alert("Commande Envoyé");
+        window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
+        alert("Commande Envoyé");
         };
     }; 
 
