@@ -120,51 +120,11 @@ const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selec
 btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
 e.preventDefault(); //empeche le recharge de la console au clic
 checkInput ();
-/* const formulaireok = {//création d'une constante qui contient/affichera toutes les valeurs du formulaires ensenmble 
-nom : document.querySelector("#nom").value, 
-prenom : document.querySelector("#prenom").value, 
-email : document.querySelector("#email").value, 
-ville : document.querySelector("#ville").value, 
-cp : document.querySelector("#cp").value, 
-adresse : document.querySelector("#adresse").value
-};
-console.log(formulaireok);
-
-localStorage.setItem("formulaireok", JSON.stringify(formulaireok)); //création d'une clé au format json dans le local storage qui contient les info du formulaire
-
-//donné a envoyer serveur, formulaire + produit enregistré dans le panier(local storage)
-const Envoieserveur = { 
-    produitdanslocalstorage, 
-    formulaireok
-    
-};
-console.log(Envoieserveur)
-//window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
-//alert("Commande Envoyé");
-
-localStorage.removeItem("teddy");  *///permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
-
- /*        let postfect = fetch("http://localhost:3000/api/teddies/order", {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(Envoieserveur) ,
-        });
-        if (postfect) {
-            let responseId = JSON.parse;
-            console.log(responseId)
-            window.location.href = "confirm.html";
-        } else {
-            console.log('OUPS');
-        }  */
-
-
 })
 
 
 
-checkInput = () =>{
+checkInput = () =>{ // création de la fonction me permettant de contrôler le formulaire avant l'envoie au serveur 
     //Controle Regex
     let checkString = /[a-zA-Z]/;
     let checkNumber = /[0-9]/;
@@ -172,7 +132,7 @@ checkInput = () =>{
     let checkMail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/y;
     let checkSpecialCharacter = /[§!@#$%^&*(),.?":{}|<>]/;
 
-    //message fin de controle
+    //message de vérification vide
     let checkMessage = "";
 
     //Récupération des inputs
@@ -181,45 +141,51 @@ checkInput = () =>{
     let Email = document.querySelector("#email").value;
     let Adresse = document.querySelector("#adresse").value;
     let Ville = document.querySelector("#ville").value;
+    let CodePostal = document.querySelector("#cp").value; 
 
 
       //tests des différents input du formulaire
-        //Test du nom => aucun chiffre ou charactère spécial permis
+        //Test nom, les chiffres ou les charactères spéciaaux ou le 'vide' ne sont pas acceptés
         if(checkNumber.test(Nom) == true || checkSpecialCharacter.test(Nom) == true || Nom == ""){
-        	checkMessage = "Vérifier/renseigner votre nom";
+        	checkMessage = "Vérifier/Compléter votre nom";
         }else{
-        	console.log("Administration : Nom ok");
+        	console.log("Nom ok");
         };
-        //Test du nom => aucun chiffre ou charactère spécial permis
+        //Test du prénom, les chiffres ou charactères spéciaux ou le 'vide' ne sont pas acceptés 
         if(checkNumber.test(Prenom) == true || checkSpecialCharacter.test(Prenom) == true || Prenom == ""){
-        	checkMessage = checkMessage + "\n" + "Vérifier/renseigner votre prénom";
-            console.log("aa")
+        	checkMessage = checkMessage + "\n"+"Vérifier/Compléter votre prénom";
         }else{
         	console.log("Prénom ok");
         };
         //Test du mail selon le regex de la source L256
         if(checkMail.test(Email) == false){
-        	checkMessage = checkMessage + "\n" + "Vérifier/renseigner votre email";
+        	checkMessage = checkMessage + "\n" + "Vérifier/Compléter votre email";
         }else{
         	console.log("Adresse mail ok");
         };
-        //Test de l'adresse => l'adresse ne contient pas obligatoirement un numéro de rue mais n'a pas de characteres spéciaux
+        //Test de l'adresse, les characteres spéciaux ou le 'vide' ne sont pas acceptés
         if(checkSpecialCharacter.test(Adresse) == true || Adresse == ""){
-        	checkMessage = "Vérifier/renseigner votre adresse";
+        	checkMessage = checkMessage +"\n"+ "Vérifier/Compléter votre adresse";
         }else{
-        	console.log("Administration : Adresse ok");
+        	console.log("Adresse ok");
         };
-        //Test de la ville => aucune ville en France ne comporte de chiffre ou charactères spéciaux
-        if(checkSpecialCharacter.test(Ville) == true && checkNumber.test(Ville) == true || Ville == ""){
-        	checkMessage = checkMessage + "\n" + "Vérifier/renseigner votre ville"
+        //Test de la ville, les chiffres ou charactères spéciaux ou le 'vide' ne sont pas acceptés
+        if(checkSpecialCharacter.test(Ville) == true || checkNumber.test(Ville) == true || Ville == ""){
+        	checkMessage = checkMessage + "\n"+ "Vérifier/Compléter votre ville"
         }else{
-        	console.log("Administration : Ville ok")
+        	console.log("Ville ok")
         };
-        //Si un des champs n'est pas bon => message d'alert avec la raison
+        //Test du code postale, les lettres ou charactères spéciaux ou le 'vide' ne sont pas acceptés
+        if(checkSpecialCharacter.test(CodePostal) == true || checkString.test(CodePostal) == true || CodePostal == ""){
+        	checkMessage = checkMessage +"\n"+ "Vérifier/Compléter votre CP";
+        }else{
+        	console.log("CP ok");
+        };
+        //Si une des conditions n'est pas ok , un message d'alert s'affiche avec le 'lieu' ou l'erreur est détectée
         if(checkMessage != ""){
-        	alert("Il est nécessaire de :" + "\n" + checkMessage);
+        	alert("Il est nécessaire de :" + "\n" + checkMessage); //"\n" permet d'aller à la ligne
         }
-        //Si tout est ok construction de l'objet contact => a revoir
+        //Si tout est ok on passe à la suite
         else{const formulaireok = {//création d'une constante qui contient/affichera toutes les valeurs du formulaires ensenmble 
         nom : document.querySelector("#nom").value, 
         prenom : document.querySelector("#prenom").value, 
@@ -245,14 +211,6 @@ checkInput = () =>{
         localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
                 //window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
                 //alert("Commande Envoyé");
-        	    contact = {
-        		Nom : Nom,
-        		Prenom : Prenom,
-        		Adresse : Adresse,
-        		Ville : Ville,
-        		Email : Email
-        	};
-        	return contact;
         };
     }; 
 
