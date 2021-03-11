@@ -91,13 +91,13 @@ const affichformulairehtml = `
 <h1 class="titreformulaire">Formulaire de commande</h1>
 <form>
   <label for="nom">Nom</label>
-  <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+  <input type="text" id="nom" name="nom" placeholder="Votre nom">
 
   <label for="prenom">Prénom</label>
   <input type="text" id="prenom" name="prenom" placeholder="Votre prénom">
 
   <label for="email">Email</label>
-  <input id="email" type="email" name="email" placeholder="Email" required>
+  <input id="email" type="email" name="email" placeholder="Email">
   
   <label for="ville">Ville</label>
   <input type="text" id="ville" name="ville"  placeholder="Votre ville" >
@@ -115,14 +115,6 @@ const affichformulairehtml = `
 ;
 constplacementformulairehtml.innerHTML =affichformulairehtml ;
 //constplacementformulairehtml.insertAdjacentHTML("beforeend", affichformulairehtml); //insertion du formulaire à l'endroit souhaité direct en html
-
-const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selection du bouton envoie formulaire
-btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
-e.preventDefault(); //empeche le recharge de la console au clic
-checkInput ();
-})
-
-
 
 checkInput = () =>{ // création de la fonction me permettant de contrôler le formulaire avant l'envoie au serveur 
     //Déclarations des variables pour procécer au controle Regex
@@ -211,4 +203,14 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
         alert("Commande Envoyé");
         };
     }; 
+
+const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selection du bouton envoie formulaire
+btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
+e.preventDefault(); //empeche le recharge de la console au clic
+checkInput (); //appel la fonction au click sur le bouton envoyer du formulaire
+})
+
+
+
+
 
