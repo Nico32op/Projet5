@@ -113,7 +113,7 @@ const affichformulairehtml = `
 constplacementformulairehtml.innerHTML =affichformulairehtml ;
 //constplacementformulairehtml.insertAdjacentHTML("beforeend", affichformulairehtml); //insertion du formulaire à l'endroit souhaité direct en html
 
-checkInput = () =>{ // création de la fonction me permettant de contrôler le formulaire avant l'envoie au serveur 
+    function checkInput(){ // création de la fonction me permettant de contrôler le formulaire avant l'envoie au serveur 
     //Déclarations des variables pour procécer au controle Regex
     let checkString = /[a-zA-Z]/;
     let checkNumber = /[0-9]/;
@@ -168,7 +168,7 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
         	alert("Il est nécessaire de :" + "\n" + messageverif); //"\n" permet d'aller à la ligne
         }
         //Si tout est ok on passe à la suite
-        else{const contact = {//création d'une constante qui contient/affichera toutes les valeurs du formulaires ensenmble 
+        else{let contact = {//création d'une constante qui contient/affichera toutes les valeurs du formulaires ensenmble 
         lastName : document.querySelector("#lastName").value, 
         firstName : document.querySelector("#firstName").value, 
         email : document.querySelector("#email").value, 
@@ -179,8 +179,6 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
         
         localStorage.setItem("contact", JSON.stringify(contact)); //création d'une clé au format json dans le local storage qui contient les info du formulaire
         
-        
-        
         //création de la variable product qui sera un tableau contenant les id présent dans le local storage
         let products = []; 
 
@@ -188,56 +186,39 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
         let iddulocalstorage = produitdanslocalstorage[z].idprodselectionne // variable qui contient les id du local storage
 
       products.push(iddulocalstorage) //insertion des id dans le tableau products    
-}
-        //donné a envoyer serveur, formulaire + produit enregistré dans le panier(local storage)
-       /*  const Envoieserveur = { 
-            produitdanslocalstorage, 
-            contact
-            
-        };
-        console.log(Envoieserveur) */
-        
-        localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
+}     
+      localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
         //window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
         //alert("Commande Envoyé");
-
-        async function postForm(contact, products) {
-            let response = await fetch("http://localhost:3000/api/teddies/order", {
-            method: 'POST',
+      console.log(contact)
+      console.log(products) 
+         };
+    };
+    
+ 
+          //déclaratin de la fonction post fecth
+  
+          async function postForm(contact, products) {
+            let response =await fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({contact, products}),
         });
         console.log(response);
-    }
-    postForm();
+    }   
 
 
-
-
-
-        };
-    }; 
-
- /* //déclaratin de la fonction post fecth
-    async function postForm(contact, products) {
-                let response = await fetch("http://localhost:3000/api/teddies/order", {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({contact, products}),
-            });
-            console.log(response);
-        } */
-
+ 
 const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selection du bouton envoie formulaire
 btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
 e.preventDefault(); //empeche le recharge de la console au clic
+postForm (); //fonction post fetch
 checkInput (); //appel la fonction au click sur le bouton envoyer du formulaire
-//postForm (); //fonction post fetch
+
 })
+
 
 
 
