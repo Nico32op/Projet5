@@ -43,7 +43,7 @@ let btn_supp = document.querySelectorAll("#btn_supp"); //selection de tous les b
 
 for (let j = 0; j < btn_supp.length; j++){  //la boucle permettra de séléctionné n'importe quel bouton supp
 btn_supp[j].addEventListener("click", function(evenement) {
-evenement.preventDefault(); // empêche le rechargement de la page  
+evenement.preventDefault(); // empêche le rechargement de la page 
  
 //selectionné l'id à supprimer 
 let idasupp = produitdanslocalstorage[j].idprodselectionne;    //selection l'id dans le local storage
@@ -199,15 +199,40 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
         console.log(Envoieserveur)
         
         localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
-        window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
-        alert("Commande Envoyé");
+        //window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
+        //alert("Commande Envoyé");
         };
     }; 
+
+ 
+    async function postForm(Envoieserveur) {
+        try 
+        {
+            let response = await fetch("http://localhost:3000/api/teddies/order", {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: Envoieserveur,
+            });
+            if (response) {
+                let responseId = await response.json();
+                //getOrderConfirmationId(responseId);
+                //
+                window.location.href = "confirm.html";
+            } else {
+                console.error('Retour du serveur : ', response.status);
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }   
 
 const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selection du bouton envoie formulaire
 btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
 e.preventDefault(); //empeche le recharge de la console au clic
 checkInput (); //appel la fonction au click sur le bouton envoyer du formulaire
+postForm ();
 })
 
 
