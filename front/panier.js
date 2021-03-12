@@ -102,9 +102,6 @@ const affichformulairehtml = `
   <label for="city">Ville</label>
   <input type="text" id="city" name="city"  placeholder="Votre ville" >
 
-  <label for="cp">Code Postal</label>
-  <input type="text"  id="cp" name="cp" placeholder="Votre code Postal">
-   
   <label for="address">Adresse</label>
   <textarea id="address" name="address" placeholder="Votre address" style="height:50px"></textarea>
  
@@ -133,7 +130,6 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
     let Email = document.querySelector("#email").value;
     let Adresse = document.querySelector("#address").value;
     let Ville = document.querySelector("#city").value;
-    //let CodePostal = document.querySelector("#cp").value; 
 
 
       //tests des différents input du formulaire
@@ -167,12 +163,6 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
         }else{
         	console.log("Ville ok")
         };
-        //Test du code postale, les lettres ou charactères spéciaux ou le 'vide' ne sont pas acceptés
-     /*    if(checkSpecialCharacter.test(CodePostal) == true || checkString.test(CodePostal) == true || CodePostal == ""){
-        	messageverif = messageverif +"\n"+ "Vérifier/Compléter votre CP";
-        }else{
-        	console.log("CP ok");
-        }; */
         //Si une des conditions n'est pas ok , un message d'alert s'affiche avec le 'lieu' ou l'erreur est détectée
         if(messageverif != ""){
         	alert("Il est nécessaire de :" + "\n" + messageverif); //"\n" permet d'aller à la ligne
@@ -182,11 +172,10 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
         lastName : document.querySelector("#lastName").value, 
         firstName : document.querySelector("#firstName").value, 
         email : document.querySelector("#email").value, 
-        city : document.querySelector("#city").value, 
-        //cp : document.querySelector("#cp").value, 
-        address : document.querySelector("#address").value
+        address : document.querySelector("#address").value,
+        city : document.querySelector("#city").value 
+        
         };
-        console.log(contact);
         
         localStorage.setItem("contact", JSON.stringify(contact)); //création d'une clé au format json dans le local storage qui contient les info du formulaire
         
@@ -198,8 +187,7 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
         for( let z = 0; z < produitdanslocalstorage.length; z++){ /*boucle qui me permet de rechercher les id du localstorage*/
         let iddulocalstorage = produitdanslocalstorage[z].idprodselectionne // variable qui contient les id du local storage
 
-      products.push(iddulocalstorage) //insertion des id dans le tableau products 
-      console.log(products)     
+      products.push(iddulocalstorage) //insertion des id dans le tableau products    
 }
         //donné a envoyer serveur, formulaire + produit enregistré dans le panier(local storage)
        /*  const Envoieserveur = { 
@@ -212,10 +200,27 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
         localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
         //window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
         //alert("Commande Envoyé");
+
+        async function postForm(contact, products) {
+            let response = await fetch("http://localhost:3000/api/teddies/order", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({contact, products}),
+        });
+        console.log(response);
+    }
+    postForm();
+
+
+
+
+
         };
     }; 
 
- //déclaratin de la fonction post fecth
+ /* //déclaratin de la fonction post fecth
     async function postForm(contact, products) {
                 let response = await fetch("http://localhost:3000/api/teddies/order", {
                 method: 'POST',
@@ -225,13 +230,13 @@ checkInput = () =>{ // création de la fonction me permettant de contrôler le f
                 body: JSON.stringify({contact, products}),
             });
             console.log(response);
-        }
+        } */
 
 const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selection du bouton envoie formulaire
 btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
 e.preventDefault(); //empeche le recharge de la console au clic
 checkInput (); //appel la fonction au click sur le bouton envoyer du formulaire
-postForm (); //fonction post fetch
+//postForm (); //fonction post fetch
 })
 
 
