@@ -24,15 +24,17 @@ cardlistpanier.innerHTML = paniervide; //insertion de la div panier vide dans le
 <article class="prodselectionner"> 
   <div class="card-body">
   <img class="card-img-top" src="${produitdanslocalstorage[i].phototed}" alt="teddy"/>
-    <h5 class="card-title">Quantité 1 : Nom ${produitdanslocalstorage[i].nomproduit}</h5> 
+    <h5 class="card-title">Quantité <input type="number" id="qté" min=1 max=5> : Nom ${produitdanslocalstorage[i].nomproduit}</h5> 
     <h5 class="card-prix">Prix : ${produitdanslocalstorage[i].prix}euros<p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
-    
-    </div>
+</div>
 </article>
        `
        ;
  cardlistpanier.innerHTML = panierplein;  
-    }   
+    } 
+    let quantité = document.querySelector("#qté").value;
+    console.log(quantité)
+    quantité = quantité * 10;
 }
 
 //-------------------Paritie suppression panier-------------------------
@@ -145,7 +147,7 @@ constplacementformulairehtml.innerHTML =affichformulairehtml ;
         }else{
         	console.log("Prénom ok");
         };
-        //Test du mail selon le regex de la source L256
+        //Test du mail 
         if(checkMail.test(Email) == false){
         	messageverif = messageverif + "\n" + "Vérifier/Compléter votre email";
         }else{
@@ -186,7 +188,7 @@ constplacementformulairehtml.innerHTML =affichformulairehtml ;
         let iddulocalstorage = produitdanslocalstorage[z].idprodselectionne // variable qui contient les id du local storage
 
       products.push(iddulocalstorage) //insertion des id dans le tableau products    
-}     
+      }          
       localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
         //window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire 
         //alert("Commande Envoyé");
@@ -199,7 +201,7 @@ constplacementformulairehtml.innerHTML =affichformulairehtml ;
           //déclaratin de la fonction post fecth
   
           async function postForm(contact, products) {
-            let response =await fetch("http://localhost:3000/api/teddies/order", {
+            let response =await fetch("http://localhost:3000/api/teddies/order",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -207,16 +209,15 @@ constplacementformulairehtml.innerHTML =affichformulairehtml ;
             body: JSON.stringify({contact, products}),
         });
         console.log(response);
-    }   
+    }  
 
 
  
 const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selection du bouton envoie formulaire
 btnenvoieformulaire.addEventListener("click", function(e){ //création de ce qui est effectué au click
 e.preventDefault(); //empeche le recharge de la console au clic
-postForm (); //fonction post fetch
 checkInput (); //appel la fonction au click sur le bouton envoyer du formulaire
-
+postForm (); //appel fonction post fetch
 })
 
 
