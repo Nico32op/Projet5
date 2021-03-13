@@ -86,6 +86,10 @@ body {
   height: 100%;
 }
 
+#qté{ /*modificdation quantité produit panier*/
+  width: 30px;
+}
+
 .prodselectionner{ /*les articles du panier en block pour faire disparaitre au click*/
   display: block;
 }
