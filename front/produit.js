@@ -55,7 +55,7 @@ let contenuprodrecup = {  //les contenus à récupérer dans le panier quand on 
   nomproduit: idprodselectionne.name,
   idprodselectionne: idprodselectionne._id,
   prix: idprodselectionne.price/100,
-  quantité: 1,
+  quantite: 1,
   description: idprodselectionne.description,
   phototed: idprodselectionne.imageUrl
   
@@ -74,8 +74,6 @@ Cliquer sur OK pour consulter le panier ou ANNULER pour revenir à l'acceuil`)){
     window.location.href = "index.html";
   } 
 };
-
-
 
 if(produitdanslocalstorage){
   produitdanslocalstorage.push(contenuprodrecup); //envoie des contenues des prod à récupérer dans le local storage
@@ -107,5 +105,5 @@ popupconfirm();
 
 
  
-    
+
 

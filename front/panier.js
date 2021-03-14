@@ -4,6 +4,25 @@ console.log(produitdanslocalstorage);
 
 const cardlistpanier = document.querySelector("#cardlistpanier"); //insértion partie html
 
+
+ let qtedulocalstorage = produitdanslocalstorage[0].quantite;
+ console.log(qtedulocalstorage)//affiche valeur quantité du local storage
+ 
+let btn_plus = document.querySelector("#btn_plus"); //selectionne le boutons plus
+
+btn_plus.addEventListener("click", function(po) { //fonction déclenché au bouton plus
+po.preventDefault();
+let modifqte = JSON.parse(qtedulocalstorage);
+modifqte.quantite++;
+localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage));
+/*   if (qtedulocalstorage == 1) {
+    //si la quantité du local storage =1
+  qtedulocalstorage++; //j'ajoute  + 1 
+  localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage));
+  } //rajoute les modif au local storage */
+});  
+
+
 if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
   //cette instruction permet d'afficher si il y a du contenu dans le local storage
   console.log("panier vide"); //création d'une div panier vide a afficheur dans le html
@@ -28,18 +47,17 @@ if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
 <article class="prodselectionner"> 
   <div class="card-body">
   <img class="card-img-top" src="${produitdanslocalstorage[i].phototed}" alt="teddy"/>
-    <h5 class="card-title">Quantité : <input type="number" id="qté" name="qté" min="0" max="10"> : Nom ${produitdanslocalstorage[i].nomproduit}</h5>
+    <h5 class="card-title">Quantité : ${produitdanslocalstorage[i].quantite} :Nom : ${produitdanslocalstorage[i].nomproduit}</h5>
   <h5 class="card-prix">Prix : ${produitdanslocalstorage[i].prix}euros<p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
-    
-    </div>
+  </div>
 </article>
        `;
-       
-    cardlistpanier.innerHTML = panierplein;
+
+  cardlistpanier.innerHTML = panierplein;
   }
 }
 
-//-------------------Paritie suppression panier-------------------------
+ //-------------------Paritie suppression panier-------------------------
 
 let btn_supp = document.querySelectorAll("#btn_supp"); //selection de tous les btn supprimer
 
@@ -221,8 +239,13 @@ function checkInput() {
       body: JSON.stringify({ contact, products }),
       //attente de la réponse
     }).then((response) => {
-      //que faire avec la réponse
-      console.log(response);
+      console.log(response);//vérif contenu réponse
+      const retourserveurstorage = []; // création d'un tableau qui contiendra le retour du serveur
+      let retourserveur = response.json(); //traduire contenu reponse au format js et mettre ds une variable
+      console.log(retourserveur)
+      retourserveurstorage.push(retourserveur); //envoie de la reponse du serveur dans le tableau qui ira dans le local storage
+      localStorage.setItem("retourserveurstorage", JSON.stringify(retourserveurstorage)); //envoie le tableau avec la reponse serveur au format json ds le local storage
+      console.log(retourserveurstorage)    
     });
   }
 }
@@ -233,3 +256,23 @@ btnenvoieformulaire.addEventListener("click", function (e) {
   e.preventDefault(); //empeche le recharge de la console au clic
   checkInput(); //appel la fonction au click sur le bouton envoyer du formulaire
 });
+
+
+
+/* for (let o = 0; o < produitdanslocalstorage.length; o++) {
+  //boucle qui me permet de rechercher les qté du localstorage
+  let qtédulocalstorage = produitdanslocalstorage[o].quantité;
+  console.log(qtédulocalstorage)//affiche valeur quantité du local storage
+} 
+ let btn_plus = document.querySelector("#btn_plus"); //selectionne les boutons plus
+
+ for (let y = 0; y < btn_plus.length; y++) { //boucle me permettant de selectioné les boutons plus
+ btn_plus[y].addEventListener("click", function(po) { //fonction déclenché au bouton plus
+ po.preventDefault();
+  
+  if (qtédulocalstorage == 1) {
+    //si la quantité du local storage =1
+  qtédulocalstorage++; //j'ajoute  + 1 
+  localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage));
+  } //rajoute les modif au local storage
+});   */
