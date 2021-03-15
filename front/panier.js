@@ -28,7 +28,7 @@ if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
 <article class="prodselectionner"> 
   <div class="card-body">
   <img class="card-img-top" src="${produitdanslocalstorage[i].phototed}" alt="teddy"/>
-    <h5 class="card-title"><button type="button" id="plus">+</button>Quantité : <span id="afficheQuantite"></span>" :Nom : ${produitdanslocalstorage[i].nomproduit}</h5>
+    <h5 class="card-title"><button type="button" id="plus${produitdanslocalstorage[i].idprodselectionne}">+</button>Quantité : <span id="afficheQuantite${produitdanslocalstorage[i].idprodselectionne}"></span> :Nom : ${produitdanslocalstorage[i].nomproduit}</h5>
   <h5 class="card-prix">Prix : ${produitdanslocalstorage[i].prix}euros<p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
   </div>
 </article>
@@ -41,15 +41,15 @@ if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
 //boucle et fonction me permettant de modifier la quantité des produits (en de cours)
 
 for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le contenu de mon local storage
-  let item = produitdanslocalstorage[q]; //je sauvegarde mon local storage dans un tableau
-  console.log(item)                                   
+  let infolocalstorage = produitdanslocalstorage[q]; //je sauvegarde mon local storage dans un tableau
+  console.log(infolocalstorage)                                   
 
-  const plusplus = document.querySelector("#plus"); //je cible mon bouton plus
-  const quantity = document.querySelector("#afficheQuantite"); //je cible l'endroit ou sera affiché la quantité
+  const plusplus = document.querySelector("#plus" + infolocalstorage.idprodselectionne); //je cible mon bouton plus
+  const quantity = document.querySelector("#afficheQuantite" + infolocalstorage.idprodselectionne); //je cible l'endroit ou sera affiché la quantité
   plusplus.addEventListener("click", (ee) => {
-    item.quantite++; //la quantité de mon local storage augmente au click 
+    infolocalstorage.quantite++; //la quantité de mon local storage augmente au click 
     localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //je renvoie les modif dans mon local storage 
-    afficheQuantite.innerHTML = item.quantite; //j'affiche ma quantité sur ma page
+    quantity.innerHTML = infolocalstorage.quantite; //j'affiche ma quantité sur ma page
   });
 }
 
@@ -275,36 +275,3 @@ btnenvoieformulaire.addEventListener("click", function (e) {
 
 
 
-/* /* for (let o = 0; o < produitdanslocalstorage.length; o++) {
-  //boucle qui me permet de rechercher les qté du localstorage
-  let qtédulocalstorage = produitdanslocalstorage[o].quantité;
-  console.log(qtédulocalstorage)//affiche valeur quantité du local storage
-} 
- let btn_plus = document.querySelector("#btn_plus"); //selectionne les boutons plus
-
- for (let y = 0; y < btn_plus.length; y++) { //boucle me permettant de selectioné les boutons plus
- btn_plus[y].addEventListener("click", function(po) { //fonction déclenché au bouton plus
- po.preventDefault();
-  
-  if (qtédulocalstorage == 1) {
-    //si la quantité du local storage =1
-  qtédulocalstorage++; //j'ajoute  + 1 
-  localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage));
-  } //rajoute les modif au local storage /* */
-
-
-
-/*   for (let q = 0; q < produitdanslocalstorage.length; q++) {
-    //pour chaque item dans le panier
-    let item = [q]; //je sauvegarde l'item trouvé
-    //je cible tous les boutons
-    const plusplus = document.querySelector("#plus" + produitdanslocalstorage.idprodselectionne);
-    const quantity = document.querySelector("#afficheQuantite" + produitdanslocalstorage.idprodselectionne);
-  }
-
-  plusplus.addEventListener("click", (ee) => {
-    //quand je clique sur le bouton "+"
-    item.quantite++; //j'ajoute 1 exemplaire
-    localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage));
-    afficheQuantite.innerHTML = item.quantite;
-  }); */
