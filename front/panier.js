@@ -5,24 +5,6 @@ console.log(produitdanslocalstorage);
 const cardlistpanier = document.querySelector("#cardlistpanier"); //insértion partie html
 
 
- let qtedulocalstorage = produitdanslocalstorage[0].quantite;
- console.log(qtedulocalstorage)//affiche valeur quantité du local storage
- 
-let btn_plus = document.querySelector("#btn_plus"); //selectionne le boutons plus
-
-btn_plus.addEventListener("click", function(po) { //fonction déclenché au bouton plus
-po.preventDefault();
-let modifqte = JSON.parse(qtedulocalstorage);
-modifqte.quantite++;
-localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage));
-/*   if (qtedulocalstorage == 1) {
-    //si la quantité du local storage =1
-  qtedulocalstorage++; //j'ajoute  + 1 
-  localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage));
-  } //rajoute les modif au local storage */
-});  
-
-
 if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
   //cette instruction permet d'afficher si il y a du contenu dans le local storage
   console.log("panier vide"); //création d'une div panier vide a afficheur dans le html
@@ -47,7 +29,7 @@ if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
 <article class="prodselectionner"> 
   <div class="card-body">
   <img class="card-img-top" src="${produitdanslocalstorage[i].phototed}" alt="teddy"/>
-    <h5 class="card-title">Quantité : ${produitdanslocalstorage[i].quantite} :Nom : ${produitdanslocalstorage[i].nomproduit}</h5>
+    <h5 class="card-title"><button type="button" id="plus">+</button>Quantité : <span id="afficheQuantite"></span>" :Nom : ${produitdanslocalstorage[i].nomproduit}</h5>
   <h5 class="card-prix">Prix : ${produitdanslocalstorage[i].prix}euros<p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
   </div>
 </article>
@@ -56,6 +38,26 @@ if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
   cardlistpanier.innerHTML = panierplein;
   }
 }
+let afficheQuantite = document.querySelector("#afficheQuantite");
+let qtedulocalstorage = produitdanslocalstorage[0].quantite;
+console.log(qtedulocalstorage)//affiche valeur quantité du local storage
+afficheQuantite.innerHTML = qtedulocalstorage;
+let btn_plus = document.querySelector("#plus"); //selectionne le boutons plus
+
+btn_plus.addEventListener("click", function(po) { //fonction déclenché au bouton plus
+objetmodiflocalstorage = produitdanslocalstorage[0];
+po.preventDefault();
+objetmodiflocalstorage.quantite++;
+localStorage.setItem("teddy", JSON.stringify(objetmodiflocalstorage));
+afficheQuantite.innerHTML = objetmodiflocalstorage.quantite;
+});
+/*   if (qtedulocalstorage == 1) {
+   //si la quantité du local storage =1
+ qtedulocalstorage++; //j'ajoute  + 1 
+ localStorage.setItem("teddy", JSON.stringify(objetmodiflocalstorage));
+ } //rajoute les modif au local storage */
+
+
 
  //-------------------Paritie suppression panier-------------------------
 
@@ -259,7 +261,7 @@ btnenvoieformulaire.addEventListener("click", function (e) {
 
 
 
-/* for (let o = 0; o < produitdanslocalstorage.length; o++) {
+/* /* for (let o = 0; o < produitdanslocalstorage.length; o++) {
   //boucle qui me permet de rechercher les qté du localstorage
   let qtédulocalstorage = produitdanslocalstorage[o].quantité;
   console.log(qtédulocalstorage)//affiche valeur quantité du local storage
@@ -274,5 +276,4 @@ btnenvoieformulaire.addEventListener("click", function (e) {
     //si la quantité du local storage =1
   qtédulocalstorage++; //j'ajoute  + 1 
   localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage));
-  } //rajoute les modif au local storage
-});   */
+  } //rajoute les modif au local storage /* */
