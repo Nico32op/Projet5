@@ -49,6 +49,7 @@ objetmodiflocalstorage = produitdanslocalstorage[0];
 po.preventDefault();
 objetmodiflocalstorage.quantite++;
 localStorage.setItem("teddy", JSON.stringify(objetmodiflocalstorage));
+localStorage.setItem("teddy2", JSON.stringify(objetmodiflocalstorage));
 afficheQuantite.innerHTML = objetmodiflocalstorage.quantite;
 });
 /*   if (qtedulocalstorage == 1) {
