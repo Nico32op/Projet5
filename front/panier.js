@@ -142,8 +142,6 @@ for (let k = 0; k < produitdanslocalstorage.length; k++) {
 
   paniermontantotal.push(prixproddanspanier); //on ajoute dans le tableau les montants des produis présents dans le panier
   console.log(paniermontantotal); //affiche le tableau avec le prix présent dans la panier
-
-  localStorage.setItem("montanttotal", JSON.stringify(paniermontantotal)); //affiche le montant total dans le local storage
 }
 
 //calcul des valeurs présant dans paniermontantotal grace à la méhode reduc qui permet d'accumuler les valeurs d'une liste (un tableau)
@@ -155,6 +153,7 @@ console.log(prixtotal); //affiche l'addition des prix présent dans la panier  /
 const affichageprixtothtml = ` 
 <div class = "affichage-prix"> Montant total du panier : ${prixtotal} euros </div>
 `;
+localStorage.setItem("montanttotal", JSON.stringify(prixtotal));//affiche le montant total dans le local storage
 cardlistpanier.insertAdjacentHTML("beforeend", affichageprixtothtml); //affichge la div en dessous des div déjà existantes dans la partie html
 
 //----------------------------------PARTIE RECUP FORMULAIRE LOCAL STORAGE-----------------
