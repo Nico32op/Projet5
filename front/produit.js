@@ -40,7 +40,6 @@ const card = `<article class="cardprod">
 `
 ;
 cardlistprod.innerHTML = card;
-
 //Partie -----------------PANIER-------------------------------------
 const btn_ajoutpanier = document.querySelector("#btn-envoyer");
  console.log(btn_ajoutpanier)                  //selection du bouton
