@@ -287,12 +287,12 @@ function checkInput() {
       //attente de la réponse
     }).then((response) => {
       console.log(response);//vérif contenu réponse
-      //const retourserveurstorage = []; // création d'un tableau qui contiendra le retour du serveur
+      const retourserveurstorage = []; // création d'un tableau qui contiendra le retour du serveur
       response.json().then((retourserveur)=>{ //traduire contenu reponse au format js et mettre ds une variable
       console.log(retourserveur)
-      //retourserveurstorage.push(retourserveur); //envoie de la reponse du serveur dans le tableau qui ira dans le local storage
-      localStorage.setItem("retourserveurstorage", JSON.stringify(retourserveur)); //envoie le tableau avec la reponse serveur au format json ds le local storage
-      //console.log(retourserveurstorage)    
+      retourserveurstorage.push(retourserveur); //envoie de la reponse du serveur dans le tableau qui ira dans le local storage
+      localStorage.setItem("retourserveurstorage", JSON.stringify(retourserveurstorage)); //envoie le tableau avec la reponse serveur au format json ds le local storage
+      console.log(retourserveurstorage)    
       });
     });
   }
