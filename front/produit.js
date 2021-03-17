@@ -54,8 +54,8 @@ console.log(btn_ajoutpanier)
 let contenuprodrecup = {  //les contenus à récupérer dans le panier quand on clcik sur ajout panier
   nomproduit: idprodselectionne.name,
   idprodselectionne: idprodselectionne._id,
-  prix: idprodselectionne.price/100,
   quantite: 1,
+  prix: idprodselectionne.price/100,
   description: idprodselectionne.description,
   phototed: idprodselectionne.imageUrl
   

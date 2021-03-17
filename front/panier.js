@@ -28,8 +28,8 @@ if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
 <article class="prodselectionner"> 
   <div class="card-body">
   <img class="card-img-top" src="${produitdanslocalstorage[i].phototed}" alt="teddy"/>
-    <h5 class="card-title"><button type="button" id="plus${produitdanslocalstorage[i].idprodselectionne}">+</button>Quantité : <span id="afficheQuantite${produitdanslocalstorage[i].idprodselectionne}"></span> :Nom : ${produitdanslocalstorage[i].nomproduit}</h5>
-  <h5 class="card-prix">Prix : ${produitdanslocalstorage[i].prix}euros<p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
+    <h5 class="card-title"><button type="button" id="plus${produitdanslocalstorage[i].idprodselectionne}">+</button>Quantité : <span id="afficheQuantite${produitdanslocalstorage[i].idprodselectionne}"></span><button type="button" id="moin${produitdanslocalstorage[i].idprodselectionne}">-</button <br><br>Nom : ${produitdanslocalstorage[i].nomproduit}</h5>
+  <h5 class="card-prix">Prix : ${produitdanslocalstorage[i].prix*produitdanslocalstorage[i].quantite}euros<p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
   </div>
 </article>
        `;
@@ -45,13 +45,33 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
   console.log(infolocalstorage)                                   
 
   const plusplus = document.querySelector("#plus" + infolocalstorage.idprodselectionne); //je cible mon bouton plus
+  const moin = document.querySelector("#moin" + infolocalstorage.idprodselectionne);
   const quantity = document.querySelector("#afficheQuantite" + infolocalstorage.idprodselectionne); //je cible l'endroit ou sera affiché la quantité
+  quantity.innerHTML = infolocalstorage.quantite;
   plusplus.addEventListener("click", (ee) => {
     infolocalstorage.quantite++; //la quantité de mon local storage augmente au click 
     localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //je renvoie les modif dans mon local storage 
     quantity.innerHTML = infolocalstorage.quantite; //j'affiche ma quantité sur ma page
   });
+
+  moin.addEventListener("click", (ee) => {
+    if (infolocalstorage.quantite == 1) {//si il ne reste plus que 1 produit dans le panier
+      
+      if (window.confirm("Voulez vous vraiment supprimer cet article du panier?")) {
+        //une fenetre s'ouvre pour être certain que le client souhaite effacer le produit du panier
+        produitdanslocalstorage.splice([q], 1); //splice supprimera l'article entier si il reste moins de 1 article
+        localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //je renvoie les modif dans mon localStorage
+        document.location.reload(); //recharge la page pour mettre à jour la page avec les produits restants (si il y en a)
+      } 
+    } else {
+    infolocalstorage.quantite--; //la quantité de mon local storage diminue au click temps qu'il reste plus que 1 article 
+    localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //je renvoie les modif dans mon local storage 
+    quantity.innerHTML = infolocalstorage.quantite; //j'affiche ma quantité sur ma page
+    } 
+  });
 }
+    
+
 
 
 
@@ -107,7 +127,7 @@ for (let j = 0; j < btn_supp.length; j++) {
 let paniermontantotal = []; //on déclare un tableau qui contiendra chaque montant du panier
 
 for (let k = 0; k < produitdanslocalstorage.length; k++) {
-  let prixproddanspanier = produitdanslocalstorage[k].prix;
+  let prixproddanspanier = produitdanslocalstorage[k].prix*produitdanslocalstorage[k].quantite;
   console.log(prixproddanspanier); //affiche le prix des produits dans le local storage/panier
 
   paniermontantotal.push(prixproddanspanier); //on ajoute dans le tableau les montants des produis présents dans le panier
