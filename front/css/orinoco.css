@@ -515,10 +515,10 @@ input[type=submit]:hover {
   .container {
     width: 94%;
     /*contient titre restaurant + les menus*/
-    height: 1200px;
+    /*height: 1200px;*/
     border: 2px none;
     border-radius: 8px;
-    background-color: #F2F2F2;
+    background-color: white;
     justify-content: space-around;
     padding-left: 20px;
     margin-left: 0;
@@ -573,14 +573,14 @@ input[type=submit]:hover {
     display: block;
   }
 
- #footerpanier {
+#footerprod {
     color: white;
-    background-color: black;
+    background-color: gray;
     height: 100px;
     width: 100%;
     position: absolute;
     display: flex;
-    top: 1750px;
+    top: 850px;
   }
 }
 @media (min-width: 768px) and (max-width: 1280px) {
@@ -805,7 +805,6 @@ input[type=submit]:hover {
   .container {
     width: 94%;
     /*contient titre restaurant + les menus*/
-    height: 1000px;
     border: 2px none;
     border-radius: 8px;
     background-color: #F2F2F2;
@@ -867,10 +866,8 @@ input[type=submit]:hover {
     color: white;
     background-color: black;
     height: 190px;
-    width: 100%;
-    position: absolute;
+    width: 100%;;
     display: flex;
-    top: 1650px;
   }
 
   footer p {
@@ -884,42 +881,7 @@ input[type=submit]:hover {
     color: white;
   }
 
-  footer h4 {
-    margin-left: 10px;
-  }
-
-  .f1 {
-    /*postion des texte du footer */
-    position: absolute;
-    left: 1px;
-    bottom: 110px;
-  }
-
-  .f2 {
-    position: absolute;
-    left: 1px;
-    bottom: 85px;
-  }
-
-  .f3 {
-    position: absolute;
-    left: 1px;
-    bottom: 65px;
-  }
-
-  .f4 {
-    position: absolute;
-    left: 1px;
-    bottom: 40px;
-  }
-
-  footer .fa-utensils {
-    margin-right: 16px;
-  }
-
-  footer .fa-hands-helping {
-    margin-right: 10px;
-  }
+  
 }
 
 
