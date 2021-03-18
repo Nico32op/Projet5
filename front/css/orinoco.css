@@ -94,6 +94,36 @@ body {
 .prodselectionner{ /*les articles du panier en block pour faire disparaitre au click*/
   display: block;
 }
+
+/*PARTIE JS CONFIRM*/ 
+.confirmprodselectionner .card-body{
+  border: 2px solid none;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px #555;
+  width: 322px;
+  height: 315px;
+  margin: 5px;
+  background-color: rgb(192, 189, 189);
+  position: relative;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: auto;
+}
+#btn_retour {
+  padding: 7px;
+  font-size: 15px;
+  background: linear-gradient(#9356DC, #FF79DA);
+  text-decoration: none;
+  color: white;
+  border: 0px solid;
+  border-radius: 20px;
+  width: 50%;
+  height: 100%;
+}
+
+
+
+
 /*FIN PARTIE JS*/
 
 

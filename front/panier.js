@@ -284,15 +284,18 @@ function checkInput() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ contact, products }),
-      //attente de la réponse
-    }).then((response) => {
+    
+    }).then((response) => {// le 1er then attend la fin de la requête et affichage la response
       console.log(response);//vérif contenu réponse
       const retourserveurstorage = []; // création d'un tableau qui contiendra le retour du serveur
-      response.json().then((retourserveur)=>{ //traduire contenu reponse au format js et mettre ds une variable
+      response.json().then((retourserveur)=>{ //le 2ème then traduit la reponse au formas json dans une variable (promesse)
       console.log(retourserveur)
       retourserveurstorage.push(retourserveur); //envoie de la reponse du serveur dans le tableau qui ira dans le local storage
       localStorage.setItem("retourserveurstorage", JSON.stringify(retourserveurstorage)); //envoie le tableau avec la reponse serveur au format json ds le local storage
-      console.log(retourserveurstorage)    
+      console.log(retourserveurstorage)
+      window.location.href = "confirm.html"; //charge l'url à l'envoie du formulaire
+      alert("Commande Envoyé =D");
+      
       });
     });
   }
