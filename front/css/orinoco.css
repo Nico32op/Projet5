@@ -48,10 +48,10 @@ body {
   width: 50%;
   height: 100%;
 }
-/*PARTIE JS ACCEUIL*/
-#cardlist{ /*fait disparaitre card page acceuil en js*/
+/*PARTIE JS ACCEUIL
+#cardlist{ fait disparaitre card page acceuil en js
   display: none;
-}
+}*/
 /*pARTIE JS PANIER*/
 .prodselectionner .card-body{
   border: 2px solid none;
@@ -334,13 +334,21 @@ footer {
   height: 100px;
   width: 100%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
+}
+
+.f4 {
+  padding: 0px;
+  margin: 0px;
 }
 
 footer a {
   /*modif du lien contact*/
   text-decoration: none;
   color: white;
+  padding: 0px;
+  margin: 0px;
 }
 
 /*partie formulaire*/
@@ -419,22 +427,21 @@ input[type=submit]:hover {
   body {
     background-color: white;
     margin: auto;
+    padding: auto;
+    flex-direction: column;
+    justify-content: space-around;
   }
 
   header {
-    height: 360px;
+    height: 280px;
     display: flex;
     flex-direction: column;
   }
 
   .logo {
     width: 190px;
-    height: 50px;
+    height: 150px;
     margin: auto;
-  }
-
-  .haut {
-    height: 50px;
   }
 
   .textehaut {
@@ -508,7 +515,7 @@ input[type=submit]:hover {
   .container {
     width: 94%;
     /*contient titre restaurant + les menus*/
-    height: 1000px;
+    height: 1200px;
     border: 2px none;
     border-radius: 8px;
     background-color: #F2F2F2;
@@ -566,62 +573,14 @@ input[type=submit]:hover {
     display: block;
   }
 
-  footer {
+ #footerpanier {
     color: white;
     background-color: black;
-    height: 190px;
+    height: 100px;
     width: 100%;
     position: absolute;
     display: flex;
-    top: 1650px;
-  }
-
-  footer p {
-    line-height: 7px;
-    margin-left: 10px;
-  }
-
-  footer a {
-    /*modif du lien contact*/
-    text-decoration: none;
-    color: white;
-  }
-
-  footer h4 {
-    margin-left: 10px;
-  }
-
-  .f1 {
-    /*postion des texte du footer */
-    position: absolute;
-    left: 1px;
-    bottom: 110px;
-  }
-
-  .f2 {
-    position: absolute;
-    left: 1px;
-    bottom: 85px;
-  }
-
-  .f3 {
-    position: absolute;
-    left: 1px;
-    bottom: 65px;
-  }
-
-  .f4 {
-    position: absolute;
-    left: 1px;
-    bottom: 40px;
-  }
-
-  footer .fa-utensils {
-    margin-right: 16px;
-  }
-
-  footer .fa-hands-helping {
-    margin-right: 10px;
+    top: 1750px;
   }
 }
 @media (min-width: 768px) and (max-width: 1280px) {

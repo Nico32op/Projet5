@@ -288,7 +288,7 @@ function checkInput() {
     }).then((response) => {// le 1er then attend la fin de la requête et affichage la response
       console.log(response);//vérif contenu réponse
       const retourserveurstorage = []; // création d'un tableau qui contiendra le retour du serveur
-      response.json().then((retourserveur)=>{ //le 2ème then traduit la reponse au formas json dans une variable (promesse)
+      response.json().then((retourserveur)=>{ //le 2ème then traduit la reponse au formas json dans une fonction (promesse)
       console.log(retourserveur)
       retourserveurstorage.push(retourserveur); //envoie de la reponse du serveur dans le tableau qui ira dans le local storage
       localStorage.setItem("retourserveurstorage", JSON.stringify(retourserveurstorage)); //envoie le tableau avec la reponse serveur au format json ds le local storage
