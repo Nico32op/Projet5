@@ -51,7 +51,7 @@ console.log(btn_ajoutpanier)
 
 
 let contenuprodrecup = {  //les contenus à récupérer dans le panier quand on clcik sur ajout panier
-  nomproduit: idprodselectionne.name,
+  nomproduit: idprodselectionne.name, //sépartion en constantes des objects "appartenants" à l'id
   idprodselectionne: idprodselectionne._id,
   quantite: 1,
   prix: idprodselectionne.price/100,

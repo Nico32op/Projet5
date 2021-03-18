@@ -16,13 +16,13 @@ const card = /*?{id} permet de rajouter l'id dans la barre uril*/
 cardlist.insertAdjacentHTML("beforeend", card); /*permet d'insérer ma const "card" dans ma div cardlist du html*/
 };
         
-document.querySelector(".btn").onclick = function() { //fonction bouton qui fait apparaitre ou disparaitre la div #cardlist//
+/* document.querySelector(".btn").onclick = function() { //fonction bouton qui fait apparaitre ou disparaitre la div #cardlist//
 if (window.getComputedStyle(document.querySelector('#cardlist')).display=='none'){
 document.querySelector("#cardlist").style.display="block";
 } else {
 document.querySelector("#cardlist").style.display="none";
 }
-}
+} */
 
 let request = fetch("http://localhost:3000/api/teddies"); //fetch déclenche la promesse
 //décla promesse (request)
