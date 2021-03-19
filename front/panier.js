@@ -53,12 +53,11 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
   quantity.innerHTML = infolocalstorage.quantite;
   affichprix.innerHTML = infolocalstorage.quantite * infolocalstorage.prix;
   
-  
   plusplus.addEventListener("click", (ee) => {
     infolocalstorage.quantite++; //la quantité de mon local storage augmente au click 
     localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //je renvoie les modif dans mon local storage 
-    quantity.innerHTML = infolocalstorage.quantite; //j'affiche ma quantité sur ma page
-    affichprix.innerHTML = infolocalstorage.quantite * infolocalstorage.prix;
+    quantity.innerHTML = infolocalstorage.quantite;
+    affichprix.innerHTML = infolocalstorage.quantite * infolocalstorage.prix;//j'affiche ma quantité sur ma page et le prix
     document.location.reload();
   });
 
