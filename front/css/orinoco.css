@@ -133,12 +133,6 @@ header {
   display: flex;
   flex-direction: column;
 }
-header i {
-  /*modif position logo géolocalisation*/
-  position: absolute;
-  left: 10px;
-  top: 13px;
-}
 
 h1, h2, h4 {
   font-family: "Shrikhand";
@@ -169,7 +163,7 @@ main {
 }
 
 .textehaut {
-  /*contient le h1 ainsi que le bouton explorer nos restau*/
+  /*contient le h1 ainsi que le bouton explorer nos teddies*/
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
   background-color: #F2F2F2;
@@ -193,7 +187,7 @@ main {
   padding-top: 20px;
 }
 
-/* bouton "explorer nos restaurants"*/
+/* bouton "explorer nos teddies"*/
 .textehaut .btn:hover {
   opacity: 0.5;
   background-color: #FF79DA;
@@ -246,21 +240,11 @@ main {
 }
 
 .menu-nav1 .btnoff {
-  /*texte en gras et fond blanc pour "Fonctionnement"*/
+  /*texte en gras et fond blanc pour "vos achats"*/
   font-weight: bolder;
   background-color: white;
 }
 
-.btnmenu1 {
-  /*les boutons "détails" placé sur les card*/
-  position: absolute;
-  top: 1px;
-  left: 232px;
-  list-style: none;
-  background-color: #99E2D0;
-  padding: 10px;
-  width: 20%;
-}
 
 .btnmenu1 a{
   text-decoration: none;
@@ -273,14 +257,14 @@ nav.menu-nav1 li.btn1:hover a, li.btn2:hover a, li.btn0:hover a {
 }
 
 .container {
-  /*contient le titre Restaurants ainsi que les 4 menus*/
+  /*contient le titre ainsi que les 5 teddies*/
   height: 100%;
   width: 100%;
   border: 2px none;
   border-radius: 8px;
 }
 .container .image1 {
-  /*contient les 4 menus*/
+  /*contient les 5 ted*/
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
@@ -445,7 +429,7 @@ input[type=submit]:hover {
   }
 
   .textehaut {
-    /*contient le h1 ainsi que le bouton nos restau*/
+    /*contient le h1 ainsi que le bouton*/
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
     background-color: #F2F2F2;
@@ -466,7 +450,7 @@ input[type=submit]:hover {
   }
 
   .menu-nav1 .btnoff {
-    /*texte en gras et fond blanc pour "Fonctionnement"*/
+    /*texte en gras et fond blanc pour "vos achats"*/
     font-weight: bolder;
     background-color: white;
   }
@@ -514,7 +498,7 @@ input[type=submit]:hover {
 
   .container {
     width: 94%;
-    /*contient titre restaurant + les menus*/
+    /*contient titre + les ted*/
     /*height: 1200px;*/
     border: 2px none;
     border-radius: 8px;
@@ -526,7 +510,7 @@ input[type=submit]:hover {
   }
   .container .image1 {
     display: flex;
-    /*les menus sont en colones avec de l'espace entre eux*/
+    /*les teds sont en colones avec de l'espace entre eux*/
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: column;
@@ -608,7 +592,7 @@ input[type=submit]:hover {
   }
 
   .menu-nav1 .btnoff {
-    /*texte en gras et fond blanc pour "Fonctionnement"*/
+    /*texte en gras et fond blanc pour "vos achats"*/
     font-weight: bolder;
     background-color: white;
     display: none;
@@ -660,7 +644,7 @@ input[type=submit]:hover {
   }
   .container .image1 {
     display: flex;
-    /*les menus sont côte à côte avec de l'espace entre eux et vont à la ligne si je rétrcie la page*/
+    /*les teds sont côte à côte avec de l'espace entre eux et vont à la ligne si je rétrcie la page*/
     flex-wrap: wrap;
     width: 100%;
   }
@@ -750,7 +734,7 @@ input[type=submit]:hover {
   }
 
   .menu-nav1 .btnoff {
-    /*texte en gras et fond blanc pour "Fonctionnement"*/
+    /*texte en gras et fond blanc pour "vos achats"*/
     font-weight: bolder;
     background-color: white;
   }
@@ -798,7 +782,7 @@ input[type=submit]:hover {
 
   .container {
     width: 94%;
-    /*contient titre restaurant + les menus*/
+    /*contient titre + les teds*/
     /*height: 1200px;*/
     border: 2px none;
     border-radius: 8px;
@@ -810,7 +794,7 @@ input[type=submit]:hover {
   }
   .container .image1 {
     display: flex;
-    /*les menus sont en colones avec de l'espace entre eux*/
+    /*les teds sont en colones avec de l'espace entre eux*/
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: column;
