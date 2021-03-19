@@ -691,51 +691,32 @@ input[type=submit]:hover {
     margin-left: 26px;
   }
 
-  footer {
-    color: white;
-    background-color: black;
-    height: 200px;
-    width: 103%;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  footer .fa-utensils {
-    margin-right: 12px;
-  }
-
-  footer .fa-hands-helping {
-    margin-right: 10px;
-  }
-
- 
-}
+} 
 
 @media (max-width: 350px) {
   /*petit écran*/
   body {
     background-color: white;
     margin: auto;
+    padding: auto;
+    flex-direction: column;
+    justify-content: space-around;
   }
 
   header {
-    height: 360px;
+    height: 280px;
     display: flex;
     flex-direction: column;
   }
 
   .logo {
     width: 190px;
-    height: 50px;
+    height: 150px;
     margin: auto;
   }
 
-  .haut {
-    height: 50px;
-  }
-
   .textehaut {
-    /*contient le h1 ainsi que le bouton nos restau*/
+    /*contient le h1 ainsi que le bouton de l'acceuil*/
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
     background-color: #F2F2F2;
@@ -746,6 +727,19 @@ input[type=submit]:hover {
 
   .textehaut h1 {
     padding-top: 20px;
+  }
+
+  .textehaut .btn { /*suppression du bouton explorer teddy pour les petits écrans*/
+    padding: 10px;
+    font-size: 18px;
+    background: linear-gradient(#9356DC, #FF79DA);
+    text-decoration: none;
+    color: white;
+    border: 0px solid;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    display: none;
   }
 
   .menu-nav1 .btn1, .btn2, .btn0 {
@@ -805,9 +799,10 @@ input[type=submit]:hover {
   .container {
     width: 94%;
     /*contient titre restaurant + les menus*/
+    /*height: 1200px;*/
     border: 2px none;
     border-radius: 8px;
-    background-color: #F2F2F2;
+    background-color: white;
     justify-content: space-around;
     padding-left: 20px;
     margin-left: 0;
@@ -854,7 +849,7 @@ input[type=submit]:hover {
 
   .container img {
     /*taille des images avec la même bordure qu'auparavant*/
-    width: 272px;
+    width: 274px;
     height: 154px;
     border: 2px none;
     border-radius: 8px;
@@ -862,25 +857,54 @@ input[type=submit]:hover {
     display: block;
   }
 
-  footer {
+#footerprod {
     color: white;
-    background-color: black;
-    height: 190px;
-    width: 100%;;
+    background-color: gray;
+    height: 100px;
+    width: 100%;
+    position: absolute;
     display: flex;
+    top: 850px;
   }
 
-  footer p {
-    line-height: 7px;
-    margin-left: 10px;
-  }
+  /* partie JS PRODUIT*/
+.cardprod{
+  border: 2px solid none;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px #555;
+  width: 280px;
+  height: 400px;
+  margin: 5px;
+  background-color: white;
+  position: relative;
+}
+/*card PANIER JS*/
+.prodselectionner .card-body{
+  border: 2px solid none;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px #555;
+  width: 282px;
+  height: 305px;
+  margin: 5px;
+  background-color: rgb(170, 166, 166);
+  position: relative;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: auto;
+}
 
-  footer a {
-    /*modif du lien contact*/
-    text-decoration: none;
-    color: white;
-  }
-
+/*partie formulaire*/
+.containerformulaire {
+  /* Ajouter box-sizing */
+  box-sizing : border-box;
+  border-radius:5px;
+  background-color:#f2f2f2;
+  padding:20px;
+  width: 100%;
+  /* redéfinition 400 + 2*20 */
+  max-width: 280px;
+  margin:0 auto;
+}
   
 }
 

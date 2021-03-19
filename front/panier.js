@@ -81,28 +81,6 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
   });
 }
     
-
-
-
-
-
-
-
-/* let afficheQuantite = document.querySelector("#afficheQuantite");
-let qtedulocalstorage = produitdanslocalstorage[0].quantite;
-console.log(qtedulocalstorage)//affiche valeur quantité du local storage
-afficheQuantite.innerHTML = qtedulocalstorage; //affiche la valeur sur la page
-let btn_plus = document.querySelector("#plus"); //selectionne le boutons plus
-
-btn_plus.addEventListener("click", function(po) { //fonction déclenché au bouton plus
-objetmodiflocalstorage = produitdanslocalstorage[0];
-po.preventDefault();
-objetmodiflocalstorage.quantite++;
-localStorage.setItem("teddy", JSON.stringify(objetmodiflocalstorage));
-localStorage.setItem("teddy2", JSON.stringify(objetmodiflocalstorage));
-afficheQuantite.innerHTML = objetmodiflocalstorage.quantite;
-});  */
-
  //-------------------Paritie suppression panier-------------------------
 
 let btn_supp = document.querySelectorAll("#btn_supp"); //selection de tous les btn supprimer
