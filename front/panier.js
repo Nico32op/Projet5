@@ -50,14 +50,17 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
   const quantity = document.querySelector("#afficheQuantite" + infolocalstorage.idprodselectionne); //je cible l'endroit ou sera affiché la quantité
   const affichprix = document.querySelector("#price" + infolocalstorage.idprodselectionne);
   
+  function affichquantiteetprixtot(){ //fonction qui affiche en html la quantité et la modification du prix total
   quantity.innerHTML = infolocalstorage.quantite;
   affichprix.innerHTML = infolocalstorage.quantite * infolocalstorage.prix;
+  }
+
+  affichquantiteetprixtot(); //appel de la fonction qui affiche la quantité et le prix total
   
   plusplus.addEventListener("click", (ee) => {
     infolocalstorage.quantite++; //la quantité de mon local storage augmente au click 
     localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //je renvoie les modif dans mon local storage 
-    quantity.innerHTML = infolocalstorage.quantite;
-    affichprix.innerHTML = infolocalstorage.quantite * infolocalstorage.prix;//j'affiche ma quantité sur ma page et le prix
+    affichquantiteetprixtot(); //appel de la fonction qui affiche la quantité et le prix total
     document.location.reload();
   });
 
@@ -73,8 +76,7 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
     } else {
     infolocalstorage.quantite--; //la quantité de mon local storage diminue au click temps qu'il reste plus que 1 article 
     localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //je renvoie les modif dans mon local storage 
-    affichprix.innerHTML = infolocalstorage.quantite * infolocalstorage.prix;
-    quantity.innerHTML = infolocalstorage.quantite; //j'affiche ma quantité sur ma page
+    affichquantiteetprixtot(); //appel de la fonction qui affiche la quantité et le prix total
     document.location.reload();
   } 
   });

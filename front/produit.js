@@ -41,14 +41,8 @@ const card = `<article class="cardprod">
 ;
 cardlistprod.innerHTML = card;
 //Partie -----------------PANIER-------------------------------------
-const btn_ajoutpanier = document.querySelector("#btn-envoyer");
- console.log(btn_ajoutpanier)                  //selection du bouton
 
-btn_ajoutpanier.addEventListener("click", function(event) {
-event.preventDefault;
-//btn_ajoutpanier.innerHTML = "cliqué";   //écouter le bouton et envoyer le contenu au panier  .preventDefault(); //preventdefault permet de ne pas réactualiser la page au click ajout panier
-console.log(btn_ajoutpanier)  
-
+function envoieaupanier(){ //déclarations de la fonction qui contient ce qui doit être envoyé au panier
 
 let contenuprodrecup = {  //les contenus à récupérer dans le panier quand on clcik sur ajout panier
   nomproduit: idprodselectionne.name, //sépartion en constantes des objects "appartenants" à l'id
@@ -92,7 +86,15 @@ console.log(produitdanslocalstorage)
 popupconfirm();
 //création de la clé teddy dans le tableau du local storage 
 }
+}
+const btn_ajoutpanier = document.querySelector("#btn-envoyer");
+ console.log(btn_ajoutpanier)                  //selection du bouton
 
+btn_ajoutpanier.addEventListener("click", function(event) {
+event.preventDefault;
+envoieaupanier(); //appel de la fonction qui envoie les objets souhaités dans le panier/localstorage
+//btn_ajoutpanier.innerHTML = "cliqué";   //écouter le bouton et envoyer le contenu au panier  .preventDefault(); //preventdefault permet de ne pas réactualiser la page au click ajout panier
+console.log(btn_ajoutpanier)  
 });
 } catch (err){ //si une erreur est révélée dans le bloc (try) elle sera affichée ici
   console.log(err)
