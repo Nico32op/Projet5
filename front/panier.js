@@ -83,34 +83,32 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
 }
     
  //-------------------Paritie suppression panier-------------------------
+ let btn_supp = document.querySelectorAll("#btn_supp"); //selection de tous les btn supprimer
 
-let btn_supp = document.querySelectorAll("#btn_supp"); //selection de tous les btn supprimer
-
-//séléectionné de l'id à supprimer
-
-for (let j = 0; j < btn_supp.length; j++) {
-  //la boucle permettra de séléctionné n'importe quel bouton supp
-  btn_supp[j].addEventListener("click", function (evenement) {
-    evenement.preventDefault(); // empêche le rechargement de la page
-
-    //selectionné l'id à supprimer
-    let idasupp = produitdanslocalstorage[j].idprodselectionne; //selection l'id dans le local storage
-
-    //la méthode filter permet de garder dans un tableau des objets avec les instructions données (ex: des mots d'une longueur de 6 lettres (en dessous du 6 lettres les mots sont sup))
-    produitdanslocalstorage = produitdanslocalstorage.filter(
-      (element) => element.idprodselectionne !== idasupp
-    );
-    console.log(produitdanslocalstorage); //le point "!" permet de faire l'inverse de la méthode filter, cad supprimer et non gardé tous les éléments qui contiennent la variable idasupp
-    //retir de la console les produit sélétionnés avec le bouton supp
-
-    //on envoie au format json dans le local storage les modifs effectés
-    localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //supp dans le local storage des prod selectionnées
-
-    window.location.href = "panier.html"; //recharge l'url à la suppression d'un produit sinon il faut actualisé la page manuellement pour supprimé le produit
-    alert("Produit Supprimé =(");
-  });
-}
-
+ //séléectionné de l'id à supprimer
+ 
+ for (let j = 0; j < btn_supp.length; j++) {
+   //la boucle permettra de séléctionné n'importe quel bouton supp
+   btn_supp[j].addEventListener("click", function (evenement) {
+     evenement.preventDefault(); // empêche le rechargement de la page
+ 
+     //selectionné l'id à supprimer
+     let idasupp = produitdanslocalstorage[j].idprodselectionne; //selection l'id dans le local storage
+ 
+     //la méthode filter permet de garder dans un tableau des objets avec les instructions données (ex: des mots d'une longueur de 6 lettres (en dessous du 6 lettres les mots sont sup))
+     produitdanslocalstorage = produitdanslocalstorage.filter(
+       (element) => element.idprodselectionne !== idasupp
+     );
+     console.log(produitdanslocalstorage); //le point "!" permet de faire l'inverse de la méthode filter, cad supprimer et non gardé tous les éléments qui contiennent la variable idasupp
+     //retir de la console les produit sélétionnés avec le bouton supp
+ 
+     //on envoie au format json dans le local storage les modifs effectés
+     localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //supp dans le local storage des prod selectionnées
+ 
+     window.location.href = "panier.html"; //recharge l'url à la suppression d'un produit sinon il faut actualisé la page manuellement pour supprimé le produit
+     alert("Produit Supprimé =(");
+   });
+ }
 //----------------------------Calcul montant total panier
 
 let paniermontantotal = []; //on déclare un tableau qui contiendra chaque montant du panier
@@ -163,7 +161,7 @@ const affichformulairehtml = `
 constplacementformulairehtml.innerHTML = affichformulairehtml;
 //constplacementformulairehtml.insertAdjacentHTML("beforeend", affichformulairehtml); //insertion du formulaire à l'endroit souhaité direct en html
 
-function checkInput() {
+function checkInputetPost() {
   // création de la fonction me permettant de contrôler le formulaire avant l'envoie au serveur
   //Déclarations des variables pour procécer au controle Regex
   let checkString = /[a-zA-Z]/;
@@ -284,7 +282,7 @@ const btnenvoieformulaire = document.querySelector("#envoieformulaire"); //selec
 btnenvoieformulaire.addEventListener("click", function (e) {
   //création de ce qui est effectué au click
   e.preventDefault(); //empeche le recharge de la console au clic
-  checkInput(); //appel la fonction au click sur le bouton envoyer du formulaire
+  checkInputetPost(); //appel la fonction au click sur le bouton envoyer du formulaire
 });
 
 

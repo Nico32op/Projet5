@@ -33,9 +33,13 @@ const cardconfirm =
 cardlistconfirm.innerHTML=cardconfirm; //j'insère dans la partie html les infos choisies à l'endroit ciblé 
 }
 
+function retouralapageindex(){ //déclaration de la fonction qui permet de retourner à la page d'acceuil et vider le local storage 
+    localStorage.clear(); // on vide le local storage 
+    alert("A bientôt!")
+    window.location.href = "index.html"; //et on revient sur la page d'acceuil
+}
+
 const retouracceuil = document.querySelector("#btn_retour"); //selection du bouton retour acceuil
 retouracceuil.addEventListener("click", function(e){ //au click sur le bouton
-localStorage.clear(); // on vide le local storage 
-alert("A bientôt!")
-window.location.href = "index.html"; //et on revient sur la page d'acceuil
+retouralapageindex();
 });
