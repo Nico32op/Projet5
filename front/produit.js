@@ -18,26 +18,27 @@ console.log(donnejson)
 const idprodselectionne = donnejson.find(element => {return element._id === id;});
 console.log(idprodselectionne); //me permet d'afficher le contenu de l'id selectionné
   
-//{ //partie que permet d'insérer le texte dans la partie html
-const cardlistprod = document.querySelector("#cardlistprod");
-const card = `<article class="cardprod"> 
-<img class="card-img-top" src="${idprodselectionne.imageUrl}" alt="teddy"/>
-  <div class="card-body">
-    <h5 class="card-title">Nom : ${idprodselectionne.name}</h5> 
-    <h5 class="card-prix">Prix : ${idprodselectionne.price/100} euros</h5> 
-     <p class="card-text">Description : ${idprodselectionne.description}</p>
-     <label for="Couleurs">Couleurs :</label>
-     <select name="couleurs" id="couleurs">
-      <option value="bl">Bleu</option>
-       <option value="rg">Rouge</option>
-       <option value="ro">Rose</option>
-     </select>
-     <p><a id="btn-envoyer" href="#" role="button">Ajouter au panier</a></p>
-   </div>
-</article>
-`
-;
-cardlistprod.innerHTML = card;
+  //{ //partie que permet d'insérer le texte dans la partie html
+  const cardlistprod = document.querySelector("#cardlistprod");
+  const card = `<article class="cardprod"> 
+  <img class="card-img-top" src="${idprodselectionne.imageUrl}" alt="teddy"/>
+    <div class="card-body">
+      <h5 class="card-title">Nom : ${idprodselectionne.name}</h5> 
+      <h5 class="card-prix">Prix : ${idprodselectionne.price/100} euros</h5> 
+       <p class="card-text">Description : ${idprodselectionne.description}</p>
+       <label for="Couleurs">Couleurs :</label>
+       <select name="couleurs" id="couleurs">
+        <option value="bl">Bleu</option>
+         <option value="rg">Rouge</option>
+         <option value="ro">Rose</option>
+       </select>
+       <p><a id="btn-envoyer" href="#" role="button">Ajouter au panier</a></p>
+     </div>
+  </article>
+  `
+  ;
+  cardlistprod.innerHTML = card;
+
 //Partie -----------------PANIER-------------------------------------
 
 function envoieaupanier(){ //déclarations de la fonction qui contient ce qui doit être envoyé au panier
