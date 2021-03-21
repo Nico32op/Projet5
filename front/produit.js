@@ -5,8 +5,6 @@ console.log(_id_url)//window.location fournis les info de l'url
 const id = _id_url.slice(4); //(slice) permet de supprimer le "?" de l'id //
 console.log(id)//
 
-
-    
 let request = fetch("http://localhost:3000/api/teddies");
 //décla promesse (request)
 request.then(async (response)=>{ //la méthode then renvoie l'argument response si tout est ok avec la promesse (statut 200 requête reussi) 
@@ -19,7 +17,7 @@ console.log(donnejson)
 
 const idprodselectionne = donnejson.find(element => {return element._id === id;});
 console.log(idprodselectionne); //me permet d'afficher le contenu de l'id selectionné
-
+  
 //{ //partie que permet d'insérer le texte dans la partie html
 const cardlistprod = document.querySelector("#cardlistprod");
 const card = `<article class="cardprod"> 

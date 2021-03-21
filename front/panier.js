@@ -42,7 +42,7 @@ if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
 //boucle et fonction me permettant de modifier la quantité des produits (en de cours)
 
 for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le contenu de mon local storage
-  let infolocalstorage = produitdanslocalstorage[q]; //je sauvegarde mon local storage dans un tableau
+  let infolocalstorage = produitdanslocalstorage[q]; //je sauvegarde mon local storage 
   console.log(infolocalstorage)                                   
 
   const plusplus = document.querySelector("#plus" + infolocalstorage.idprodselectionne); //je cible mon bouton plus
