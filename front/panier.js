@@ -86,7 +86,7 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
  let btn_supp = document.querySelectorAll("#btn_supp"); //selection de tous les btn supprimer
 
  //séléectionné de l'id à supprimer
- 
+ function supressionarticle(){ //fonction qui me permettra de supprimer un article
  for (let j = 0; j < btn_supp.length; j++) {
    //la boucle permettra de séléctionné n'importe quel bouton supp
    btn_supp[j].addEventListener("click", function (evenement) {
@@ -109,8 +109,9 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
      alert("Produit Supprimé =(");
    });
  }
+}
+supressionarticle(); //appel de la fonction
 //----------------------------Calcul montant total panier
-
 let paniermontantotal = []; //on déclare un tableau qui contiendra chaque montant du panier
 
   for (let k = 0; k < produitdanslocalstorage.length; k++) {
