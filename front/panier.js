@@ -131,10 +131,11 @@ console.log(prixtotal); //affiche l'addition des prix présent dans la panier  /
 const affichageprixtothtml = ` 
 <div class = "affichage-prix"> Montant total du panier : ${prixtotal} euros </div>
 `;
+
 localStorage.setItem("montanttotal", JSON.stringify(prixtotal));//affiche le montant total dans le local storage
 cardlistpanier.insertAdjacentHTML("beforeend", affichageprixtothtml); //affichge la div en dessous des div déjà existantes dans la partie html
 
-//----------------------------------PARTIE RECUP FORMULAIRE LOCAL STORAGE-----------------
+//----------------------------------PARTIE RECUP FORMULAIRE/ AJOUT AU LOCAL STORAGE-----------------
 constplacementformulairehtml = document.querySelector("#formulaire"); //selection de l'endroit ou on veut afficher le formulaire
 const affichformulairehtml = `                                  
 <div class="containerformulaire">
@@ -255,6 +256,8 @@ function checkInputetPost() {
     //alert("Commande Envoyé");
     console.log(contact);
     console.log(products);
+    
+    
     fetch("http://localhost:3000/api/teddies/order", {
       //requête fetch POST
       method: "POST",
@@ -262,8 +265,8 @@ function checkInputetPost() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ contact, products }),
-    
-    }).then((response) => {// le 1er then attend la fin de la requête et affichage la response
+      })
+    .then((response) => {// le 1er then attend la fin de la requête et affichage la response
       console.log(response);//vérif contenu réponse
       const retourserveurstorage = []; // création d'un tableau qui contiendra le retour du serveur
       response.json().then((retourserveur)=>{ //le 2ème then traduit la reponse au formas json dans une fonction (promesse)
