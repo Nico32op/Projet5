@@ -113,7 +113,7 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
 
 let paniermontantotal = []; //on déclare un tableau qui contiendra chaque montant du panier
 
-for (let k = 0; k < produitdanslocalstorage.length; k++) {
+  for (let k = 0; k < produitdanslocalstorage.length; k++) {
   let prixproddanspanier = produitdanslocalstorage[k].prix*produitdanslocalstorage[k].quantite;
   console.log(prixproddanspanier); //affiche le prix des produits dans le local storage/panier
 

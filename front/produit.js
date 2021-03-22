@@ -5,6 +5,30 @@ console.log(_id_url)//window.location fournis les info de l'url
 const id = _id_url.slice(4); //(slice) permet de supprimer le "?" de l'id //
 console.log(id)//
 
+  //{ //partie que permet d'insérer le texte dans la partie html
+  const cardlistprod = document.querySelector("#cardlistprod");
+  //fonction qui me permet d'afficher les produits avec le contenu souhaité
+  function affichproddynamique(image, name, prix, description){
+  const card = `<article class="cardprod"> 
+  <img class="card-img-top" src="${image}" alt="teddy"/>
+    <div class="card-body">
+      <h5 class="card-title">Nom : ${name}</h5> 
+      <h5 class="card-prix">Prix : ${prix} euros</h5> 
+       <p class="card-text">Description : ${description}</p>
+       <label for="Couleurs">Couleurs :</label>
+       <select name="couleurs" id="couleurs">
+        <option value="bl">Bleu</option>
+         <option value="rg">Rouge</option>
+         <option value="ro">Rose</option>
+       </select>
+       <p><a id="btn-envoyer" href="#" role="button">Ajouter au panier</a></p>
+     </div>
+  </article>
+  `
+  ;
+  cardlistprod.innerHTML = card;//insertion dans la partie html
+  }
+
 let request = fetch("http://localhost:3000/api/teddies");
 //décla promesse (request)
 request.then(async (response)=>{ //la méthode then renvoie l'argument response si tout est ok avec la promesse (statut 200 requête reussi) 
@@ -18,27 +42,12 @@ console.log(donnejson)
 const idprodselectionne = donnejson.find(element => {return element._id === id;});
 console.log(idprodselectionne); //me permet d'afficher le contenu de l'id selectionné
   
-  //{ //partie que permet d'insérer le texte dans la partie html
-  const cardlistprod = document.querySelector("#cardlistprod");
-  const card = `<article class="cardprod"> 
-  <img class="card-img-top" src="${idprodselectionne.imageUrl}" alt="teddy"/>
-    <div class="card-body">
-      <h5 class="card-title">Nom : ${idprodselectionne.name}</h5> 
-      <h5 class="card-prix">Prix : ${idprodselectionne.price/100} euros</h5> 
-       <p class="card-text">Description : ${idprodselectionne.description}</p>
-       <label for="Couleurs">Couleurs :</label>
-       <select name="couleurs" id="couleurs">
-        <option value="bl">Bleu</option>
-         <option value="rg">Rouge</option>
-         <option value="ro">Rose</option>
-       </select>
-       <p><a id="btn-envoyer" href="#" role="button">Ajouter au panier</a></p>
-     </div>
-  </article>
-  `
-  ;
-  cardlistprod.innerHTML = card;
-
+  // appel de la fonction qui me permet d'afficher le contenu des card produits avec les donnés du serveur
+affichproddynamique (idprodselectionne.imageUrl, 
+                     idprodselectionne.name, 
+                     idprodselectionne.price/100, 
+                     idprodselectionne.description
+                     );
 //Partie -----------------PANIER-------------------------------------
 
 function envoieaupanier(){ //déclarations de la fonction qui contient ce qui doit être envoyé au panier
