@@ -37,6 +37,7 @@ request
       const idprodselectionne = await response.json(); //traduit les données reçu au format json si la promesse est bien reçu
       console.log(idprodselectionne);
 
+      //AUTRES METOHDES POUR AFFICHIER LE CONTENU EN FONCTION DE L'ID
       // const idprodselectionne = donnejson.find((element) => {
       // return element._id === id;
       //});
