@@ -25,7 +25,7 @@ function affichproddynamique(image, name, prix, description) {
   cardlistprod.innerHTML = card; //insertion dans la partie html
 }
 
-let request = fetch("http://localhost:3000/api/teddies");
+let request = fetch("http://localhost:3000/api/teddies/" + id); //+id permet d'afficher le contenu du produits grace à son id
 //décla promesse (request)
 request
   .then(async (response) => {
@@ -34,40 +34,34 @@ request
 
     // try relève si il y a des erreurs dans le bloc si il y a une erreur elle relevée dans le catch
     try {
-      const donnejson = await response.json(); //traduit les données reçu au format json si la promesse est bien reçu
-      console.log(donnejson);
+      const idprodselectionne = await response.json(); //traduit les données reçu au format json si la promesse est bien reçu
+      console.log(idprodselectionne);
 
-      const idprodselectionne = donnejson.find((element) => {
-        return element._id === id;
-      });
-      console.log(idprodselectionne); //me permet d'afficher le contenu de l'id selectionné
+      // const idprodselectionne = donnejson.find((element) => {
+      // return element._id === id;
+      //});
+      //console.log(idprodselectionne); //me permet d'afficher le contenu de l'id selectionné
 
       affichproddynamique(
+        //appel de la fonction qui me permet d'afficher les éléments souhaités dans la card
         idprodselectionne.imageUrl,
         idprodselectionne.name,
         idprodselectionne.price / 100,
         idprodselectionne.description
       );
       const choixcouleurs = idprodselectionne.colors; //enregistre les couleurs en fonctions du produit selectionné
-      const idselect = document.querySelector("#couleurs");
+      const idselect = document.querySelector("#couleurs"); //cible l'endroit ou on veut implanter les couleurs
       for (let u = 0; u < choixcouleurs.length; u++) {
+        //permet d'afficher toutes les couleurs d'un produit
         console.log(choixcouleurs);
         //let option = document.createElement('option');
         //option.value = choixcouleurs[u];
         //option.innerHTML = choixcouleurs[u];
         //idselect.appendChild(option);
 
-        let optioncouleur = `<option value="${choixcouleurs[u]}">${choixcouleurs[u]}</option>`;
+        let optioncouleur = `<option value="${choixcouleurs[u]}">${choixcouleurs[u]}</option>`; //les valeurs de n'importe quelle couleurs seront affichés dans le html
         idselect.insertAdjacentHTML("beforeend", optioncouleur);
       }
-
-      /*      // appel de la fonction qui me permet d'afficher le contenu des card produits avec les donnés du serveur
-      affichproddynamique(
-        idprodselectionne.imageUrl,
-        idprodselectionne.name,
-        idprodselectionne.price / 100,
-        idprodselectionne.description
-      ); */
 
       //Partie -----------------PANIER-------------------------------------
 

@@ -132,9 +132,8 @@ function checkInputetPost() {
       // le 1er then attend la fin de la requête et affichage la response
       console.log(response); //vérif contenu réponse
       const retourserveurstorage = []; // création d'un tableau qui contiendra le retour du serveur
-      let retourserveur = await response.json();
+      let retourserveur = await response.json(); //si la response est ok on la transforme en format json dans une variable
       try {
-        //le 2ème then traduit la reponse au formas json dans une fonction (promesse)
         console.log(retourserveur);
         retourserveurstorage.push(retourserveur); //envoie de la reponse du serveur dans le tableau qui ira dans le local storage
         localStorage.setItem(
