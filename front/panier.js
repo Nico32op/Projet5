@@ -61,7 +61,7 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) { //je vais cherche le 
     infolocalstorage.quantite++; //la quantité de mon local storage augmente au click 
     localStorage.setItem("teddy", JSON.stringify(produitdanslocalstorage)); //je renvoie les modif dans mon local storage 
     affichquantiteetprixtot(); //appel de la fonction qui affiche la quantité et le prix total
-    document.location.reload();
+    document.location.reload(); //recharge l'url
   });
 
   moin.addEventListener("click", (ee) => {
@@ -135,7 +135,7 @@ const affichageprixtothtml = `
 localStorage.setItem("montanttotal", JSON.stringify(prixtotal));//affiche le montant total dans le local storage
 cardlistpanier.insertAdjacentHTML("beforeend", affichageprixtothtml); //affichge la div en dessous des div déjà existantes dans la partie html
 
-//----------------------------------PARTIE RECUP FORMULAIRE/ AJOUT AU LOCAL STORAGE-----------------
+/* //----------------------------------PARTIE RECUP FORMULAIRE/ AJOUT AU LOCAL STORAGE-----------------
 constplacementformulairehtml = document.querySelector("#formulaire"); //selection de l'endroit ou on veut afficher le formulaire
 const affichformulairehtml = `                                  
 <div class="containerformulaire">
@@ -247,7 +247,7 @@ function checkInputetPost() {
 
     for (let z = 0; z < produitdanslocalstorage.length; z++) {
       /*boucle qui me permet de rechercher les id du localstorage*/
-      let iddulocalstorage = produitdanslocalstorage[z].idprodselectionne; // variable qui contient les id du local storage
+      /* let iddulocalstorage = produitdanslocalstorage[z].idprodselectionne; // variable qui contient les id du local storage
 
       products.push(iddulocalstorage); //insertion des id dans le tableau products
     }
@@ -288,6 +288,6 @@ btnenvoieformulaire.addEventListener("click", function (e) {
   e.preventDefault(); //empeche le recharge de la console au clic
   checkInputetPost(); //appel la fonction au click sur le bouton envoyer du formulaire
 });
-
+ */ 
 
 
