@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/orinoco.css"/> <!--la ligne qui relie mon html au css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"/> <!--la ligne qui me permet d'avoir les icones-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/orinoco.css" />
+    <!--la ligne qui relie mon html au css-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    />
+    <!--la ligne qui me permet d'avoir les icones-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script type="text/javascript" src="panier.js" defer></script>
-    <script type="text/javascript" src="formulaire.js" defer></script>
+    <script type="text/javascript" src="js/panier.js" defer></script>
+    <script type="text/javascript" src="js/formulaire.js" defer></script>
     <title>Orinoco</title>
-   </head>
-<body>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="images/logo.png" alt="logo" />
+      <!--logo dus site-->
+    </header>
 
-<header>
-  <img class="logo" src="images/logo.png" alt="logo"> <!--logo dus site-->
-</header>    
+    <main>
+      <nav class="menu-nav1">
+        <ul>
+          <li class="btn1">
+            <a href="index.html"><i class="fas fa-list"></i>Acceuil</a>
+          </li>
+        </ul>
+      </nav>
 
-<main>
-  <nav class="menu-nav1">
-    <ul>
-      <li class="btn1"><a href="index.html"><i class="fas fa-list"></i>Acceuil</a>
-      </li>
-     </ul>
-   </nav>
-   
-<section class="container">
-    <h2>Produits sélectionnés</h2>
-    <div class="image1">
-    <div id="cardlistpanier"></div> <!--partie ou le js html est inséré-->
-    </div>
-  <div id="formulaire"></div>
-    <!-- <div class="containerformulaire">
+      <section class="container">
+        <h2>Produits sélectionnés</h2>
+        <div class="image1">
+          <div id="cardlistpanier"></div>
+          <!--partie ou le js html est inséré-->
+        </div>
+        <div id="formulaire"></div>
+        <!-- <div class="containerformulaire">
       <h1 class="titreformulaire">Formulaire de commande</h1>
       <form>
         <label for="nom">Nom</label>
@@ -62,13 +69,14 @@
         <input type="submit" value="Envoyer">
       </form>
     </div> -->
-</section> 
+      </section>
+    </main>
 
-</main>
-
-<footer id="footerpanier">
-	<h4>Orinoco</h4>
-<div class="f4"><p><a href="mailto:adresse@serveur.com">Contact</a></p></div>
-</footer>
-</body>
+    <footer id="footerpanier">
+      <h4>Orinoco</h4>
+      <div class="f4">
+        <p><a href="mailto:adresse@serveur.com">Contact</a></p>
+      </div>
+    </footer>
+  </body>
 </html>
