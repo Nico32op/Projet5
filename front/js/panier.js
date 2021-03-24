@@ -31,7 +31,7 @@ function veriflocalstorage() {
   <img class="card-img-top" src="${produitdanslocalstorage[i].phototed}" alt="teddy"/>
     <h5 class="card-title"><button type="button" id="plus${produitdanslocalstorage[i].idprodselectionne}">+</button>Quantité : <span id="afficheQuantite${produitdanslocalstorage[i].idprodselectionne}"></span><button type="button" id="moin${produitdanslocalstorage[i].idprodselectionne}">-</button <br><br>Nom : ${produitdanslocalstorage[i].nomproduit}</h5>
     <h5 class="card-title">Prix à l'unité : ${produitdanslocalstorage[i].prix}</h5>
-    <h5 class="card-prix">Prix Total : <span id="price${produitdanslocalstorage[i].idprodselectionne}">${produitdanslocalstorage[i].prix}</span>euros<p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
+    <h5 class="card-prix">Prix Total : <span id="price${produitdanslocalstorage[i].idprodselectionne}"></span>euros<p><a id="btn_supp" href="#" role="button">Supprimer</a></p></h5> 
   </div>
 </article>
        `;
