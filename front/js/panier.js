@@ -2,29 +2,30 @@
 let produitdanslocalstorage = JSON.parse(localStorage.getItem("teddy")); //récup du local storage dans la page panier avec la clé teddy
 console.log(produitdanslocalstorage);
 
-const cardlistpanier = document.querySelector("#cardlistpanier"); //insértion partie html
+function veriflocalstorage() {
+  // création d'une fonction qui permet de vérifier le contenu du local storage
+  const cardlistpanier = document.querySelector("#cardlistpanier"); //insértion partie html
 
-if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
-  //cette instruction permet d'afficher si il y a du contenu dans le local storage
-  console.log("panier vide"); //création d'une div panier vide a afficheur dans le html
-  //panier vide s'affiche si le local storage est vide ou = à zéro
-  const paniervide = ` 
+  if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
+    //cette instruction permet d'afficher si il y a du contenu dans le local storage
+    console.log("panier vide"); //création d'une div panier vide a afficheur dans le html
+    //panier vide s'affiche si le local storage est vide ou = à zéro
+    const paniervide = ` 
     <div class="paniervide">
     <div>Panier vide</div> 
     <img class="card-img-top" src="images/calimero.jpg" alt="snif"/>
     </div> 
     `;
-  cardlistpanier.innerHTML = paniervide; //insertion de la div panier vide dans le html
-} else {
-  //si le panier n'est pas vide afficher les éléments du local storage
-  //console.log("panier remplie")
-  let panierplein = []; //déclaration d'un tableau si le panier est plein
-  for (i = 0; i < produitdanslocalstorage.length; i++) {
-    //la boucle permettra d'ajouter les élements du local storage dans le tableau
-    //instertion du tableau avec le contenu html dans la page html
-    panierplein =
-      panierplein +
-      ` 
+    cardlistpanier.innerHTML = paniervide; //insertion de la div panier vide dans le html
+  } else {
+    //si le panier n'est pas vide afficher les éléments du local storage
+    let panierplein = []; //déclaration d'un tableau si le panier est plein
+    for (i = 0; i < produitdanslocalstorage.length; i++) {
+      //la boucle permettra d'ajouter les élements du local storage dans le tableau
+      //instertion du tableau avec le contenu html dans la page html
+      panierplein =
+        panierplein +
+        ` 
 <article class="prodselectionner"> 
   <div class="card-body">
   <img class="card-img-top" src="${produitdanslocalstorage[i].phototed}" alt="teddy"/>
@@ -35,12 +36,13 @@ if (produitdanslocalstorage === null || produitdanslocalstorage == 0) {
 </article>
        `;
 
-    cardlistpanier.innerHTML = panierplein;
+      cardlistpanier.innerHTML = panierplein;
+    }
   }
 }
+veriflocalstorage(); //appel la fonction qui permet de vérifier le contenu du local storage
 
 //boucle et fonction me permettant de modifier la quantité des produits (en de cours)
-
 for (let q = 0; q < produitdanslocalstorage.length; q++) {
   //je vais cherche le contenu de mon local storage
   let infolocalstorage = produitdanslocalstorage[q]; //je sauvegarde mon local storage
