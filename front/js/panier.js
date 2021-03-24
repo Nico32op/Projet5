@@ -128,26 +128,30 @@ function supressionarticle() {
 }
 supressionarticle(); //appel de la fonction
 //----------------------------Calcul montant total panier
-let paniermontantotal = []; //on déclare un tableau qui contiendra chaque montant du panier
+function calculpanier() {
+  //création d'une fonction qui permet d'additiones les prix présent dans le local storage
+  let paniermontantotal = []; //on déclare un tableau qui contiendra chaque montant du panier
 
-for (let k = 0; k < produitdanslocalstorage.length; k++) {
-  let prixproddanspanier =
-    produitdanslocalstorage[k].prix * produitdanslocalstorage[k].quantite;
-  console.log(prixproddanspanier); //affiche le prix des produits dans le local storage/panier
+  for (let k = 0; k < produitdanslocalstorage.length; k++) {
+    let prixproddanspanier =
+      produitdanslocalstorage[k].prix * produitdanslocalstorage[k].quantite;
+    console.log(prixproddanspanier); //affiche le prix des produits dans le local storage/panier
 
-  paniermontantotal.push(prixproddanspanier); //on ajoute dans le tableau les montants des produis présents dans le panier
-  console.log(paniermontantotal); //affiche le tableau avec le prix présent dans la panier
-}
+    paniermontantotal.push(prixproddanspanier); //on ajoute dans le tableau les montants des produis présents dans le panier
+    console.log(paniermontantotal); //affiche le tableau avec le prix présent dans la panier
+  }
 
-//calcul des valeurs présant dans paniermontantotal grace à la méhode reduc qui permet d'accumuler les valeurs d'une liste (un tableau)
-const reducer = (accumulator, currentValue) => accumulator + currentValue; //méthode vu sur MDN
-const prixtotal = paniermontantotal.reduce(reducer, 0); //on insère dans une constante l'accumulation (l'addition) des prix du tableau présent dans paniermontantotal
-console.log(prixtotal); //affiche l'addition des prix présent dans la panier  //,0 permet d'éviter une erreur dans la console quand le panier est vide
+  //calcul des valeurs présant dans paniermontantotal grace à la méhode reduc qui permet d'accumuler les valeurs d'une liste (un tableau)
+  const reducer = (accumulator, currentValue) => accumulator + currentValue; //méthode vu sur MDN
+  const prixtotal = paniermontantotal.reduce(reducer, 0); //on insère dans une constante l'accumulation (l'addition) des prix du tableau présent dans paniermontantotal
+  console.log(prixtotal); //affiche l'addition des prix présent dans la panier  //,0 permet d'éviter une erreur dans la console quand le panier est vide
 
-//création de la div pour afficher le prix dans la partie html
-const affichageprixtothtml = ` 
+  //création de la div pour afficher le prix dans la partie html
+  const affichageprixtothtml = ` 
 <div class = "affichage-prix"> Montant total du panier : ${prixtotal} euros </div>
 `;
 
-localStorage.setItem("montanttotal", JSON.stringify(prixtotal)); //affiche le montant total dans le local storage
-cardlistpanier.insertAdjacentHTML("beforeend", affichageprixtothtml); //affichge la div en dessous des div déjà existantes dans la partie html
+  localStorage.setItem("montanttotal", JSON.stringify(prixtotal)); //affiche le montant total dans le local storage
+  cardlistpanier.insertAdjacentHTML("beforeend", affichageprixtothtml); //affichge la div en dessous des div déjà existantes dans la partie html
+}
+calculpanier();
