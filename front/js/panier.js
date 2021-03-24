@@ -57,7 +57,7 @@ for (let q = 0; q < produitdanslocalstorage.length; q++) {
   ); //je cible l'endroit ou sera affiché la quantité
   const affichprix = document.querySelector(
     "#price" + infolocalstorage.idprodselectionne
-  );
+  ); //je cible l'endroit ou sera affiché le prix total du produit
 
   function affichquantiteetprixtot() {
     //fonction qui affiche en html la quantité et la modification du prix total
