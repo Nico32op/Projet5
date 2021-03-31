@@ -42,7 +42,7 @@ function veriflocalstorage() {
 }
 veriflocalstorage(); //appel la fonction qui permet de vérifier le contenu du local storage
 
-//boucle et fonction me permettant de modifier la quantité des produits (en de cours)
+//boucle et fonction me permettant de modifier la quantité des produits
 for (let q = 0; q < produitdanslocalstorage.length; q++) {
   //je vais cherche le contenu de mon local storage
   let infolocalstorage = produitdanslocalstorage[q]; //je sauvegarde mon local storage

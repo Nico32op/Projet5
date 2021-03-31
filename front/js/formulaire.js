@@ -115,7 +115,7 @@ function checkInputetPost() {
 
       products.push(iddulocalstorage); //insertion des id dans le tableau products
     }
-    localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire, cependant les informations restent dans la clé teddy 2
+    localStorage.removeItem("teddy"); //permet de supprimer les articles du panier (clé teddy) a l'envoie du formulaire
     //window.location.href = "panier.html"; //recharge l'url à l'envoie du formulaire
     //alert("Commande Envoyé");
     console.log(contact);
