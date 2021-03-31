@@ -426,7 +426,7 @@ input[type="submit"]:hover {
   body {
     background-color: white;
     margin: auto;
-    padding: auto;
+    /*padding: auto;*/
     flex-direction: column;
     justify-content: space-around;
   }
@@ -700,7 +700,7 @@ input[type="submit"]:hover {
   body {
     background-color: white;
     margin: auto;
-    padding: auto;
+    /*padding: auto;*/
     flex-direction: column;
     justify-content: space-around;
   }
