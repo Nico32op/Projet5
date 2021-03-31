@@ -80,7 +80,7 @@ request
         };
         console.log(contenuprodrecup);
 
-        //-----------------------------------récupéré les produits dans local storage//
+        //-----------------------------------envoyer les produits dans local storage//
         let produitdanslocalstorage = JSON.parse(localStorage.getItem("teddy"));
         //json.parse permet de convertir le format js en json//
 
@@ -98,36 +98,49 @@ Cliquer sur OK pour consulter le panier ou ANNULER pour revenir à l'acceuil`)
         };
 
         if (produitdanslocalstorage) {
-          produitdanslocalstorage.push(contenuprodrecup); //envoie des contenues des prod à récupérer dans le local storage
-          localStorage.setItem(
-            "teddy",
-            JSON.stringify(produitdanslocalstorage)
-          );
-          localStorage.setItem(
-            "teddy2",
-            JSON.stringify(produitdanslocalstorage)
-          ); // on créé 2 fois la même clé, une le contenu sera affichée en html et l'autre restera uniquement dans le local storage
-          popupconfirm();
-          //création de la clé teddy dans le tableau du local storage
-          // json.stringify envoie des données au format js à convertir en json
-        }
-        // l'instruction if et else me permet de continuer de rajouter les clé teddy dans le tableau, sinon la clé teddy est toujours remplacé
-        else {
+          // on vérifie si le même produit existe dans le local storage
+          let produitexistant = false;
+          for (let i = 0; i < produitdanslocalstorage.length; i++) {
+            if (
+              contenuprodrecup.nomproduit == //dans le cas ou le même produit existe
+              produitdanslocalstorage[i].nomproduit
+            ) {
+              produitdanslocalstorage[i].quantite++; // on rajoute 1 à sa quantité
+              produitexistant = true;
+              localStorage.setItem(
+                "teddy",
+                JSON.stringify(produitdanslocalstorage)
+              );
+              popupconfirm();
+              return false; // return false permet de sortir de la boucle si un produit est correspondant
+            }
+          }
+          if (!produitexistant) {
+            // si le même produit n'existe pas on rajoute le produit "normalement"
+            produitdanslocalstorage.push(contenuprodrecup); //envoie des contenues des prod à récupérer dans le local storage
+            localStorage.setItem(
+              "teddy",
+              JSON.stringify(produitdanslocalstorage)
+            );
+            popupconfirm();
+            //création de la clé teddy dans le tableau du local storage
+            // json.stringify envoie des données au format js à convertir en json
+          }
+          // l'instruction if et else me permet de continuer de rajouter les clé teddy dans le tableau, sinon la clé teddy est toujours remplacé
+        } else {
+          //si le local storage n'existe pas on prépare déjà le panier et ce qu'il contiendra
           produitdanslocalstorage = [];
           produitdanslocalstorage.push(contenuprodrecup);
           localStorage.setItem(
             "teddy",
             JSON.stringify(produitdanslocalstorage)
           );
-          localStorage.setItem(
-            "teddy2",
-            JSON.stringify(produitdanslocalstorage)
-          ); // on créé 2 fois la même clé, une le contenu sera affichée en html et l'autre restera uniquement dans le local storage
           console.log(produitdanslocalstorage);
           popupconfirm();
           //création de la clé teddy dans le tableau du local storage
         }
       }
+
       const btn_ajoutpanier = document.querySelector("#btn-envoyer");
       console.log(btn_ajoutpanier); //selection du bouton
 
